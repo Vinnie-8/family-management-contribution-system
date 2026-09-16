@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://mydomain.org/mysite/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <loc>https://mydomain.org/mysite/Authentication_Authorization_study/auth_casestudy/</loc>
+         <lastmod>2026-09-16</lastmod>
     </url>
     <url>
-         <loc>https://mydomain.org/mysite/feedback/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <loc>https://mydomain.org/mysite/user_research/</loc>
+         <lastmod>2026-09-16</lastmod>
     </url>
     <url>
-         <loc>https://mydomain.org/mysite/summary/</loc>
-         <lastmod>2026-09-14</lastmod>
+         <loc>https://mydomain.org/mysite/user_research/feedback/</loc>
+         <lastmod>2026-09-16</lastmod>
+    </url>
+    <url>
+         <loc>https://mydomain.org/mysite/user_research/summary/</loc>
+         <lastmod>2026-09-16</lastmod>
     </url>
 </urlset>

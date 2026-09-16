@@ -1,0 +1,875 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mydomain.org/mysite/Authentication_Authorization_study/auth_casestudy/">
+      
+      
+      
+        <link rel="next" href="../../user_research/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Authentication & Authorization in Backend Development - Family-Management-Contribution-System-Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#authentication-authorization-in-backend-development" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Family-Management-Contribution-System-Documentation" class="md-header__button md-logo" aria-label="Family-Management-Contribution-System-Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Family-Management-Contribution-System-Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Authentication &amp; Authorization in Backend Development
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Authentication Authorization study
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user_research/" class="md-tabs__link">
+          
+  
+  
+  User research
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Family-Management-Contribution-System-Documentation" class="md-nav__button md-logo" aria-label="Family-Management-Contribution-System-Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Family-Management-Contribution-System-Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication Authorization study
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Authentication Authorization study
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication &amp; Authorization in Backend Development
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication &amp; Authorization in Backend Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-api-authentication-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common API Authentication Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common API Authentication Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Authentication:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-web-tokens-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON Web Tokens (JWT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-20-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OAuth 2.0 Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorization-granting-access-to-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authorization: Granting Access to Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices-for-implementing-authentication-and-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices for Implementing Authentication and Authorization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Research Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_research/feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Findings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_research/summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="authentication-authorization-in-backend-development">Authentication &amp; Authorization in Backend Development</h1>
+<p>In the world of software development, ensuring the security and privacy of user data is of utmost importance. Two essential concepts that play a vital role in achieving this are authentication and authorization. These mechanisms work hand in hand to verify the identity of users and determine their level of access to specific resources.We will delve into the significance of authentication and authorization in backend development, and explore how they are implemented using examples.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Authentication and authorization</strong> are the twin pillars of REST API security, serving fundamentally different but sequential purposes. Authentication (AuthN) verifies who the client is, while Authorization (AuthZ) determines what that verified identity is allowed to do. Because REST APIs are architecturally stateless, every incoming request must self-authenticate and demonstrate proper permissions independently</p>
+</div>
+<h2 id="authentication">Authentication:</h2>
+<p><strong>Verifying User Identity</strong></p>
+<p><strong>Authentication</strong> is the process of verifying the identity of a user attempting to access a system or application. It ensures that the user is who they claim to be. Various authentication methods exist, including <strong>passwords, tokens, biometrics</strong>, and more. Let's take a look at a few examples:</p>
+<h2 id="common-api-authentication-methods">Common API Authentication Methods</h2>
+<h4 id="basic-authentication"><mark>Basic Authentication:</mark></h4>
+<ul>
+<li><strong>How it works:</strong> 
+The client combines the username and password, encodes them in Base64, and sends them inside the Authorization: Basic <credentials> header.</li>
+<li><strong>Trade-offs:</strong> Base64 is strictly an encoding format, not encryption. If intercepted, it is easily decoded.</li>
+<li><strong>Best Use Case:</strong> Strictly restricted to internal microservices, testing, or development environments wrapped entirely inside HTTPS/TLS. </li>
+</ul>
+<h4 id="api-keys"><mark>API Keys</mark></h4>
+<ul>
+<li><strong>How it works:</strong> The server generates a unique, long random string for the client. The client appends it to an HTTP header (e.g., X-API-KEY) or query parameter with each request. </li>
+<li><strong>Trade-offs:</strong> Unlike modern tokens, API keys are static, typically do not expire automatically, and require a server-side database lookup to verify validity. </li>
+<li><strong>Best Use Case:</strong> Server-to-server communication, read-only public data distribution, and basic usage tracking/rate limiting.</li>
+</ul>
+<h4 id="json-web-tokens-jwt"><mark>JSON Web Tokens</mark> (JWT)</h4>
+<ul>
+<li><strong>How it works:</strong> A stateless, cryptographically signed token containing user information (payload). Upon a valid login, the server issues a JWT. The client stores it locally and passes it inside the Authorization: Bearer <token> header. </li>
+<li><strong>Trade-offs:</strong> Highly scalable because the server decodes and validates the signature without checking a database. However, because they are stateless, revoking a JWT before its expiration date requires secondary strategies (like blocklists or refresh token rotation). </li>
+<li><strong>Best Use Case:</strong> Single-page applications (SPAs), mobile apps, and distributed microservices requiring stateless scalability</li>
+</ul>
+<h4 id="oauth-20-framework"><mark>OAuth 2.0 Framework</mark></h4>
+<ul>
+<li><strong>How it works:</strong> A sophisticated delegation framework rather than a simple protocol. It allows a third-party application to obtain limited access to a user’s account using access tokens without ever exposing the user's login credentials. </li>
+<li><strong>Trade-offs:</strong> Highly secure, highly flexible, supports token expiration, and permits fine-grained scopes. The primary drawback is its complexity to set up and manage compared to static methods.</li>
+<li><strong>Best Use Case:</strong> Enterprise-grade security, third-party ecosystem integrations (e.g., "Sign in with Google"), and public developer platforms</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ol>
+<li><strong>Username and Password</strong>:
+   This is the most common form of authentication. Users provide a username and password combination to access a system. The backend verifies the credentials against a stored record, and if they match, the user is authenticated.</li>
+<li><strong>Token-based Authentication</strong>: 
+ Token-based authentication involves issuing a token to a user upon successful login. The token is then sent with subsequent requests to the server to authenticate the user. One popular implementation is JSON Web Tokens (JWT), which stores user information in an encoded format within the token.</li>
+<li><strong>Multi-factor Authentication (MFA)</strong>: 
+  MFA adds an extra layer of security by requiring users to provide multiple forms of authentication. For example, in addition to a password, a user might need to provide a verification code sent to their mobile device.</li>
+</ol>
+</div>
+<h2 id="authorization-granting-access-to-resources">Authorization: Granting Access to Resources</h2>
+<p><strong>Authorization</strong> is the process of determining what resources a user is allowed to access and what actions they can perform. Once a user is authenticated, their authorization level dictates the operations they can carry out within the system.
+Once a client is successfully authenticated, the API must restrict resource access through structured authorization frameworks:
+ <strong>Let's explore some examples:</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ol>
+<li><strong>Role-Based Access Control (RBAC)</strong>:
+Permissions are assigned to specific administrative roles (e.g., Admin, Editor, Viewer). The API checks if the user's role is permitted to execute the matching HTTP method on that route (e.g., only Admin can access DELETE /users/:id).
+  RBAC assigns roles to users based on their responsibilities within an organization. Each role is granted specific permissions and access rights. For instance, an admin role might have full access to all resources, while a regular user role may have limited access.</li>
+<li><strong>Attribute-Based Access Control (ABAC)</strong>: 
+Fine-grained permission management based on variables like context, time of day, location, or resource ownership (e.g., a user can only PUT /articles/:id if article.ownerId === user.id).
+ ABAC defines access control policies based on various attributes such as user attributes, resource attributes, and environmental attributes. It allows for more granular control over access by considering multiple factors. For example, an access policy might grant read access to a specific resource only during business hours.</li>
+<li><strong>Permission-Based Authorization</strong>: 
+Tokens are minted with restricted operational permissions (e.g., read:profile, write:orders). Even an admin user's token cannot execute a write operation if the token itself was only granted.
+ In permission-based authorization, users are granted access based on individual permissions. Each user is associated with a set of permissions that explicitly define what actions they can perform. For instance, a user may have permission to create, read, update, or delete specific resources.</li>
+</ol>
+</div>
+<h2 id="best-practices-for-implementing-authentication-and-authorization">Best Practices for Implementing Authentication and Authorization</h2>
+<ol>
+<li><strong>Use Secure Password Storage:</strong> 
+Ensure that user passwords are securely stored using strong hashing algorithms like bcrypt or Argon2, combined with a unique salt for each user. Additionally, consider implementing password policies, such as enforcing minimum complexity requirements.</li>
+<li><strong>Use Strong Encryption:</strong>
+Ensure that sensitive data, such as authentication tokens and session information, is transmitted securely over HTTPS. Implementing strong encryption protocols adds an extra layer of protection against eavesdropping and data tampering.</li>
+<li><strong>Implement Session Management:</strong>
+ Proper session management is crucial for maintaining user authentication state. Implement mechanisms like session expiration, session invalidation upon logout, and regenerate session IDs after authentication events.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol>
+<li><strong>Regularly Update and Patch Dependencies</strong>:
+ Keep your backend dependencies up to date to benefit from the latest security patches and bug fixes. Outdated libraries can contain vulnerabilities that can be exploited by attackers.</li>
+<li><strong>Implement Rate Limiting:</strong>
+ Protect your application from brute-force attacks and denial-of-service (DoS) attempts by implementing rate limiting mechanisms. This limits the number of requests a user can make within a specific timeframe.</li>
+<li><strong>Apply Principle of Least Privilege:</strong>
+ Grant users the minimum level of access necessary to perform their tasks. Regularly review and audit user permissions to ensure they align with the principle of least privilege.</li>
+</ol>
+</div>
+<h2 id="conclusion">Conclusion</h2>
+<p><strong>Authentication and authorization are essential components of backend development forming the bedrock of secure and reliable systems. By implementing these mechanisms effectively, developers can safeguard their applications against unauthorized access and potential data breaches. Whether you're building a web application, API, or any backend system, prioritizing authentication and authorization is paramount to providing a secure user experience.</strong>
+<strong>Remember, authentication verifies user identity, while authorization controls access to resources. Implementing appropriate authentication and authorization methods will help you create a robust backend system that upholds data security and user trust.</strong></p>
+<h2 id="references">References</h2>
+<p><a href="https://www.youtube.com/watch?v=utITo20klQk">REST API Authentication</a></p>
+<p><a href="https://dev.to/riteshkokam/authentication-authorization-in-backend-development-4go">Authentication and Authorization in backend</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+        
+          
+          <a href="../../user_research/" class="md-footer__link md-footer__link--next" aria-label="Next: User Research Analysis">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                User Research Analysis
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Vincent Muoki
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "header.autohide"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
