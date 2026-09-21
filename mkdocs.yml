@@ -10,6 +10,8 @@ nav:
       - Feedback: user_research/feedback.md
   - Authentication & Authorization:
       - Case Study: Authentication_Authorization_study/auth_casestudy.md
+  - FastAPI_Authentication: 
+      - Case Study: fastapi_auth_casestudy/fastapi_authentication.md
 
 markdown_extensions:
   - admonition
