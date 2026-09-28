@@ -12,6 +12,9 @@ nav:
       - Case Study: Authentication_Authorization_study/auth_casestudy.md
   - FastAPI_Authentication: 
       - Case Study: fastapi_auth_casestudy/fastapi_authentication.md
+  - Database_Design_Normalization:
+      - Case Study: Database_design_and_normalization/db_design_normalization.md
+
 
 markdown_extensions:
   - admonition
@@ -25,6 +28,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - def_list
+  - sane_lists
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.superfences:
