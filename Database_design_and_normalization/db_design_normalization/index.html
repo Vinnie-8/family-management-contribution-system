@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://Vinnie-8.github.io/family-management-contribution-system/Authentication_Authorization_study/auth_casestudy/">
+        <link rel="canonical" href="https://Vinnie-8.github.io/family-management-contribution-system/Database_design_and_normalization/db_design_normalization/">
       
       
-        <link rel="prev" href="../../user_research/feedback/">
+        <link rel="prev" href="../../fastapi_auth_casestudy/fastapi_authentication/">
       
-      
-        <link rel="next" href="../../fastapi_auth_casestudy/fastapi_authentication/">
       
       
         
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#authentication-authorization-in-backend-development" class="md-skip">
+        <a href="#what-database-design-actually-is" class="md-skip">
           Skip to content
         </a>
       
@@ -248,13 +246,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../Authentication_Authorization_study/auth_casestudy/" class="md-tabs__link">
           
   
   
@@ -290,11 +286,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../Database_design_and_normalization/db_design_normalization/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -517,31 +515,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -559,7 +554,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -574,37 +569,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Case Study
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Authentication_Authorization_study/auth_casestudy/" class="md-nav__link">
         
   
   
@@ -620,142 +588,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#authentication" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authentication:
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-api-authentication-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common API Authentication Methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common API Authentication Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-authentication" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Basic Authentication:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api-keys" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Keys
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json-web-tokens-jwt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON Web Tokens (JWT)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oauth-20-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OAuth 2.0 Framework
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#authorization-granting-access-to-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authorization: Granting Access to Resources
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices-for-implementing-authentication-and-authorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Best Practices for Implementing Authentication and Authorization
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -861,28 +693,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -900,7 +735,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -915,10 +750,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Database_design_and_normalization/db_design_normalization/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Study
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -934,6 +796,154 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#difference-between-primary-key-and-foreign-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Difference between Primary Key and Foreign Key
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Difference between Primary Key and Foreign Key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-primary-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Primary Key?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-foreign-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Foreign Key?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalization-the-core-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalization — the core idea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationships-in-sql-one-to-one-one-to-many-many-to-many" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationships in SQL - One-to-One, One-to-Many, Many-to-Many
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relationships in SQL - One-to-One, One-to-Many, Many-to-Many">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-of-relationships-in-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type of Relationships in SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-many-to-many-m2m-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handling Many-to-Many (M2M) Relationships
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Many-to-Many (M2M) Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-schema-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Schema Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-benefits-of-database-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What are the benefits of database normalization?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -963,96 +973,165 @@
 
 
 
-<h1 id="authentication-authorization-in-backend-development">Authentication &amp; Authorization in Backend Development</h1>
-<p>In the world of software development, ensuring the security and privacy of user data is of utmost importance. Two essential concepts that play a vital role in achieving this are authentication and authorization. These mechanisms work hand in hand to verify the identity of users and determine their level of access to specific resources.We will delve into the significance of authentication and authorization in backend development, and explore how they are implemented using examples.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>Authentication and authorization</strong> are the twin pillars of REST API security, serving fundamentally different but sequential purposes. Authentication (AuthN) verifies who the client is, while Authorization (AuthZ) determines what that verified identity is allowed to do. Because REST APIs are architecturally stateless, every incoming request must self-authenticate and demonstrate proper permissions independently</p>
-</div>
-<h2 id="authentication">Authentication:</h2>
-<p><strong>Verifying User Identity</strong></p>
-<p><strong>Authentication</strong> is the process of verifying the identity of a user attempting to access a system or application. It ensures that the user is who they claim to be. Various authentication methods exist, including <strong>passwords, tokens, biometrics</strong>, and more. Let's take a look at a few examples:</p>
-<h2 id="common-api-authentication-methods">Common API Authentication Methods</h2>
-<h4 id="basic-authentication"><mark>Basic Authentication:</mark></h4>
-<ul>
-<li><strong>How it works:</strong> 
-The client combines the username and password, encodes them in Base64, and sends them inside the Authorization: Basic <credentials> header.</li>
-<li><strong>Trade-offs:</strong> Base64 is strictly an encoding format, not encryption. If intercepted, it is easily decoded.</li>
-<li><strong>Best Use Case:</strong> Strictly restricted to internal microservices, testing, or development environments wrapped entirely inside HTTPS/TLS. </li>
-</ul>
-<h4 id="api-keys"><mark>API Keys</mark></h4>
-<ul>
-<li><strong>How it works:</strong> The server generates a unique, long random string for the client. The client appends it to an HTTP header (e.g., X-API-KEY) or query parameter with each request. </li>
-<li><strong>Trade-offs:</strong> Unlike modern tokens, API keys are static, typically do not expire automatically, and require a server-side database lookup to verify validity. </li>
-<li><strong>Best Use Case:</strong> Server-to-server communication, read-only public data distribution, and basic usage tracking/rate limiting.</li>
-</ul>
-<h4 id="json-web-tokens-jwt"><mark>JSON Web Tokens</mark> (JWT)</h4>
-<ul>
-<li><strong>How it works:</strong> A stateless, cryptographically signed token containing user information (payload). Upon a valid login, the server issues a JWT. The client stores it locally and passes it inside the Authorization: Bearer <token> header. </li>
-<li><strong>Trade-offs:</strong> Highly scalable because the server decodes and validates the signature without checking a database. However, because they are stateless, revoking a JWT before its expiration date requires secondary strategies (like blocklists or refresh token rotation). </li>
-<li><strong>Best Use Case:</strong> Single-page applications (SPAs), mobile apps, and distributed microservices requiring stateless scalability</li>
-</ul>
-<h4 id="oauth-20-framework"><mark>OAuth 2.0 Framework</mark></h4>
-<ul>
-<li><strong>How it works:</strong> A sophisticated delegation framework rather than a simple protocol. It allows a third-party application to obtain limited access to a user’s account using access tokens without ever exposing the user's login credentials. </li>
-<li><strong>Trade-offs:</strong> Highly secure, highly flexible, supports token expiration, and permits fine-grained scopes. The primary drawback is its complexity to set up and manage compared to static methods.</li>
-<li><strong>Best Use Case:</strong> Enterprise-grade security, third-party ecosystem integrations (e.g., "Sign in with Google"), and public developer platforms</li>
-</ul>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<ol>
-<li><strong>Username and Password</strong>:
-   This is the most common form of authentication. Users provide a username and password combination to access a system. The backend verifies the credentials against a stored record, and if they match, the user is authenticated.</li>
-<li><strong>Token-based Authentication</strong>: 
- Token-based authentication involves issuing a token to a user upon successful login. The token is then sent with subsequent requests to the server to authenticate the user. One popular implementation is JSON Web Tokens (JWT), which stores user information in an encoded format within the token.</li>
-<li><strong>Multi-factor Authentication (MFA)</strong>: 
-  MFA adds an extra layer of security by requiring users to provide multiple forms of authentication. For example, in addition to a password, a user might need to provide a verification code sent to their mobile device.</li>
-</ol>
-</div>
-<h2 id="authorization-granting-access-to-resources">Authorization: Granting Access to Resources</h2>
-<p><strong>Authorization</strong> is the process of determining what resources a user is allowed to access and what actions they can perform. Once a user is authenticated, their authorization level dictates the operations they can carry out within the system.
-Once a client is successfully authenticated, the API must restrict resource access through structured authorization frameworks:
- <strong>Let's explore some examples:</strong></p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<ol>
-<li><strong>Role-Based Access Control (RBAC)</strong>:
-Permissions are assigned to specific administrative roles (e.g., Admin, Editor, Viewer). The API checks if the user's role is permitted to execute the matching HTTP method on that route (e.g., only Admin can access DELETE /users/:id).
-  RBAC assigns roles to users based on their responsibilities within an organization. Each role is granted specific permissions and access rights. For instance, an admin role might have full access to all resources, while a regular user role may have limited access.</li>
-<li><strong>Attribute-Based Access Control (ABAC)</strong>: 
-Fine-grained permission management based on variables like context, time of day, location, or resource ownership (e.g., a user can only PUT /articles/:id if article.ownerId === user.id).
- ABAC defines access control policies based on various attributes such as user attributes, resource attributes, and environmental attributes. It allows for more granular control over access by considering multiple factors. For example, an access policy might grant read access to a specific resource only during business hours.</li>
-<li><strong>Permission-Based Authorization</strong>: 
-Tokens are minted with restricted operational permissions (e.g., read:profile, write:orders). Even an admin user's token cannot execute a write operation if the token itself was only granted.
- In permission-based authorization, users are granted access based on individual permissions. Each user is associated with a set of permissions that explicitly define what actions they can perform. For instance, a user may have permission to create, read, update, or delete specific resources.</li>
-</ol>
-</div>
-<h2 id="best-practices-for-implementing-authentication-and-authorization">Best Practices for Implementing Authentication and Authorization</h2>
-<ol>
-<li><strong>Use Secure Password Storage:</strong> 
-Ensure that user passwords are securely stored using strong hashing algorithms like bcrypt or Argon2, combined with a unique salt for each user. Additionally, consider implementing password policies, such as enforcing minimum complexity requirements.</li>
-<li><strong>Use Strong Encryption:</strong>
-Ensure that sensitive data, such as authentication tokens and session information, is transmitted securely over HTTPS. Implementing strong encryption protocols adds an extra layer of protection against eavesdropping and data tampering.</li>
-<li><strong>Implement Session Management:</strong>
- Proper session management is crucial for maintaining user authentication state. Implement mechanisms like session expiration, session invalidation upon logout, and regenerate session IDs after authentication events.</li>
-</ol>
+<h1 id="what-database-design-actually-is"><mark>What database design actually is</mark></h1>
+<p><strong>Database design is the process of deciding what tables exist, what columns each has, and how tables relate to each other which is done before writing a single line of application code. Get it wrong, and every feature built on top of it inherits the mistake; get it right, and features slot in cleanly.</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<ol>
-<li><strong>Regularly Update and Patch Dependencies</strong>:
- Keep your backend dependencies up to date to benefit from the latest security patches and bug fixes. Outdated libraries can contain vulnerabilities that can be exploited by attackers.</li>
-<li><strong>Implement Rate Limiting:</strong>
- Protect your application from brute-force attacks and denial-of-service (DoS) attempts by implementing rate limiting mechanisms. This limits the number of requests a user can make within a specific timeframe.</li>
-<li><strong>Apply Principle of Least Privilege:</strong>
- Grant users the minimum level of access necessary to perform their tasks. Regularly review and audit user permissions to ensure they align with the principle of least privilege.</li>
-</ol>
+<ul>
+<li><strong>BEFORE MOVING TO NORMALIZATION,LETS FIRST DISCUSS ABOUT FOREIGN KEY AND PRIMARY KEY.</strong></li>
+</ul>
 </div>
-<h2 id="conclusion">Conclusion</h2>
-<p><strong>Authentication and authorization are essential components of backend development forming the bedrock of secure and reliable systems. By implementing these mechanisms effectively, developers can safeguard their applications against unauthorized access and potential data breaches. Whether you're building a web application, API, or any backend system, prioritizing authentication and authorization is paramount to providing a secure user experience.</strong>
-<strong>Remember, authentication verifies user identity, while authorization controls access to resources. Implementing appropriate authentication and authorization methods will help you create a robust backend system that upholds data security and user trust.</strong></p>
-<h2 id="references">References</h2>
-<p><a href="https://www.youtube.com/watch?v=utITo20klQk">REST API Authentication</a></p>
-<p><a href="https://dev.to/riteshkokam/authentication-authorization-in-backend-development-4go">Authentication and Authorization in backend</a></p>
+<h2 id="difference-between-primary-key-and-foreign-key"><mark>Difference between Primary Key and Foreign Key</mark></h2>
+<ul>
+<li>Keys are one of the most important elements in a relational database to maintain the relationship between the tables and it also helps in uniquely identifying the data from a table. The primary key is a key that helps uniquely identify the tuple of the database.</li>
+<li>In contrast, the Foreign Key is a key used to determine the relationship between the tables through the primary key of one table that is the primary key of one table acts as a foreign key to another table. Now, let's discuss both of them in some detail.</li>
+</ul>
+<h3 id="what-is-primary-key">What is Primary Key?</h3>
+<ul>
+<li>A primary key is used to ensure that data in the specific column is unique. A column cannot have NULL values. It is either an existing table column or a column that is specifically generated by the database according to a defined sequence.</li>
+</ul>
+<h3 id="what-is-foreign-key">What is Foreign Key?</h3>
+<ul>
+<li>A foreign key is a column or group of columns in a relational database table that provides a link between data in two tables. It is a column (or columns) that references a column (most often the primary key) of another table.</li>
+</ul>
+<h2 id="normalization-the-core-idea"><mark>Normalization — the core idea</mark></h2>
+<ul>
+<li>
+<p>Normalization is the discipline of structuring tables so that each fact is stored in exactly one place. The enemy it fights is redundancy — the same piece of information duplicated across multiple rows — because redundancy causes anomalies: update the fact in one place, forget the other, and now your database contradicts itself.</p>
+</li>
+<li>
+<p>Normalization fixes this by splitting data into separate tables, each owning one kind of fact, connected by references — which is exactly what a Foreign Key is.</p>
+</li>
+<li>
+<p>In database design, handles like <strong>FK (Foreign Key) and M2M (Many-to-Many)</strong> represent the core mechanics used to establish relationships between tables while maintaining data integrity through normalization.</p>
+</li>
+<li>Here is a practical breakdown of how these concepts work together to eliminate redundancy and structure your data correctly.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li><strong>The Role of Foreign Keys (FK):</strong>   A Foreign Key is a column (or group of columns) in one table that links to a <strong>Primary Key (PK)</strong> in another table. It is the fundamental tool used to enforce referential integrity and build relationships.</li>
+<li><strong>1:Many (One-to-Many) Relationships</strong>:</li>
+</ul>
+</div>
+<p>This is the most common relational pattern. You implement it by placing the PK of the "One" side as an FK into the "Many" side.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li><strong>Departments and Employees.</strong> One department can have many employees, but an employee belongs to only one department.</li>
+<li>Implementation:   Place DepartmentID as an FK inside the Employees table.</li>
+</ul>
+</div>
+<h2 id="relationships-in-sql-one-to-one-one-to-many-many-to-many"><mark>Relationships in SQL - One-to-One, One-to-Many, Many-to-Many</mark></h2>
+<p>Relationships in SQL define how tables in a relational database are connected and interact through foreign keys, ensuring data integrity and enabling efficient data retrieval by allowing data to be linked across multiple tables.</p>
+<h3 id="type-of-relationships-in-sql"><mark>Type of Relationships in SQL</mark></h3>
+<p>There are different types of relationships: one-to-one, one-to-many, many-to-many, and self-referencing.</p>
+<ol>
+<li><strong>One-to-One Relationship</strong>.</li>
+</ol>
+<p>Each record in Table A is associated with one and only one record in Table B, and vice versa.</p>
+<pre><code>- Setup: Include a foreign key in one of the tables that references the primary key of the other table.
+</code></pre>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Tables users and user_profiles, where each user has a single corresponding profile.</p>
+</div>
+<ol start="2">
+<li><strong>One-to-Many Relationship</strong>.</li>
+</ol>
+<p>Each record in Table A can be associated with multiple records in Table B, but each record in Table B is associated with only one record in Table A.</p>
+<pre><code>- Setup: Include a foreign key in the "many" side table (Table B) that references the primary key of the "one" side table (Table A).
+</code></pre>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>Tables departments and employees, where each department can have multiple employees, but each employee belongs to one department.</li>
+</ul>
+</div>
+<ol start="3">
+<li><strong>Many-to-Many Relationship</strong></li>
+</ol>
+<p>Each record in Table A can be associated with multiple records in Table B, and vice versa.</p>
+<pre><code>- Setup: Create an intermediate table (also known as a junction or linking table) that contains foreign keys referencing both related tables.
+</code></pre>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>Tables students and courses, where each student can enroll in multiple courses, and each course can have multiple students.</li>
+</ul>
+</div>
+<ol start="4">
+<li><strong>Many-to-One Relationship</strong></li>
+</ol>
+<p>Multiple records in table B can be associated with one record in table A.</p>
+<pre><code>- Setup: Crate a Foreign key in "Many Table" that references to Primary Key in "One Table".
+</code></pre>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>Table Teachers and Courses, many courses can be taught by single teacher.</li>
+</ul>
+</div>
+<ol start="5">
+<li><strong>Self-Referencing Relationship</strong></li>
+</ol>
+<p>A table has a foreign key that references its primary key.</p>
+<pre><code>- Setup: Include a foreign key column in the same table that references its primary key.
+</code></pre>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>A table employees with a column manager_id referencing the same table's employee_id.</li>
+</ul>
+</div>
+<h2 id="handling-many-to-many-m2m-relationships">Handling Many-to-Many (M2M) Relationships</h2>
+<ul>
+<li>Relational databases cannot directly map a Many-to-Many relationship between two tables. If you try, you will violate normalization rules by creating duplicate rows or storing messy, comma-separated lists in a single cell.To solve this, you must break the M2M relationship into.</li>
+<li>1:Many relationships using a Junction Table (also known as a join, bridge, or associative table).
+     <strong>The M2M PatternScenario:</strong> Students and Courses. A student can enroll in multiple courses, and a course can have multiple students.Solution: Create a third table, Enrollments.</li>
+</ul>
+<h3 id="database-schema-example">Database Schema Example</h3>
+<ul>
+<li>Students Table:   StudentID (PK), StudentName</li>
+<li>Courses Table:    CourseID (PK), CourseName</li>
+<li>Enrollments Table (Junction):  <ul>
+<li>StudentID (FK referencing Students)</li>
+<li>CourseID (FK referencing Courses)</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>The combination of (StudentID, CourseID) typically forms a Composite Primary Key for this table to prevent duplicate enrollments.</li>
+</ul>
+</div>
+<h2 id="what-are-the-benefits-of-database-normalization"><mark>What are the benefits of database normalization?</mark></h2>
+<p><strong>The benefits of database normalization include:</strong></p>
+<ol>
+<li><strong>Prevention of data anomalies</strong></li>
+</ol>
+<p>When larger, more complicated tables are decomposed (or divided) into smaller, simpler tables, altering a database becomes an easier, less error-prone process, and limits changes to the now-smaller tables of related data.</p>
+<ol start="2">
+<li><strong>Reduction of unintentional data redundancy</strong></li>
+</ol>
+<p>While intentional data redundancy can help improve data quality, security and availability, uninentional data redundancy is the effect of systems inadvertently creating duplicate data, which results in inefficiencies.</p>
+<ol start="3">
+<li><strong>Data storage cost savings</strong></li>
+</ol>
+<p>Reducing duplicate data through database normalization can lower data storage costs. This is especially important for cloud environments where pricing is often based on the volume of data storage used.</p>
+<ol start="4">
+<li><strong>Faster data retrieval</strong></li>
+</ol>
+<p>Less data redundancy due to normalization can also lead to faster data queries as lower redundancy often requires less data processing during searches.</p>
+<h2 id="references"><strong>References</strong></h2>
+<p><a href="https://www.youtube.com/watch?v=SK4H5tTT6-M">Watch how normalization occurs</a></p>
+<p><a href="https://www.geeksforgeeks.org/dbms/difference-between-primary-key-and-foreign-key/">Primarykey and Foreignkey</a></p>
+<p><a href="https://www.geeksforgeeks.org/sql/relationships-in-sql-one-to-one-one-to-many-many-to-many/">one to one and many to one</a></p>
+<p><a href="https://www.centron.de/en/tutorials/database-normalization-explained-1nf-2nf-3nf-bcnf-guide">Data normalization</a></p>
+<p><a href="https://www.ibm.com/think/topics/database-normalization">Normalization study</a></p>
+<p><a href="https://www.youtube.com/watch?v=4q-keGvUnag">Creating relationships</a></p>
+<p><a href="https://www.youtube.com/watch?v=1eUn6lsZ7c4">Watch different relationships in databases</a></p>
 
 
 
@@ -1088,7 +1167,7 @@ Ensure that sensitive data, such as authentication tokens and session informatio
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../user_research/feedback/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Feedback">
+          <a href="../../fastapi_auth_casestudy/fastapi_authentication/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Case Study">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1098,27 +1177,11 @@ Ensure that sensitive data, such as authentication tokens and session informatio
                 Previous
               </span>
               <div class="md-ellipsis">
-                Feedback
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../../fastapi_auth_casestudy/fastapi_authentication/" class="md-footer__link md-footer__link--next" aria-label="Next: Case Study">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
                 Case Study
               </div>
             </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
           </a>
+        
         
       </nav>
     
