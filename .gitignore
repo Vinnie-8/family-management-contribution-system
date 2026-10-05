@@ -5,4 +5,7 @@ node_modules/
 __pycache__/
 *.pyc
 .env
-.next/
+.next/venv/
+.env
+__pycache__/
+site/
