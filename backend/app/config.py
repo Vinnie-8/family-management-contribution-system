@@ -1,4 +1,4 @@
-from urilib.parse import quote_plus
+from urllib.parse import quote_plus
 from pydantic_settings import BaseSettings,SettingsConfigDict
 
 class Settings(BaseSettings):
@@ -15,20 +15,21 @@ class Settings(BaseSettings):
     jwt_algorithm :str = "HS256"
     access_token_expire_minutes:int
     refresh_token_expire_days : int
-    temp_password_expiry_hours : int
+    temp_password_expire_hours : int
     temp_password_length : int
-    
+    environment: str = "development"
     
     @property
     def database_url(self) -> str:
         return (
-            f"postgresql+psycopg2://{self.db_user}:{self.db_password}"
-            f"@{self.db_host}:{self.db_port}/{self.db_name}"
-        )
+        f"postgresql+psycopg2://{quote_plus(self.db_user)}:{quote_plus(self.db_password)}"
+        f"@{self.db_host}:{self.db_port}/{self.db_name}"
+    )
     model_config = SettingsConfigDict(
         env_file = ".env",
         env_file_encoding = "utf-8",
         case_sensitive = False,
+        extra = "ignore",
     )
  
  
