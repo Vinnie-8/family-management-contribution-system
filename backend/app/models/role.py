@@ -12,7 +12,7 @@ class Role(Base):
     description = Column(String,nullable = False)
     
     
-    Member_roles = relationship("MemberRole", back_populates = "role")
+    member_roles = relationship("MemberRole", back_populates = "role")
     
     
     

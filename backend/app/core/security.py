@@ -2,6 +2,7 @@
 Password hashing, temporary-password generation, and JWT create/verify.
 """
 import secrets
+import uuid
 from datetime import datetime, timedelta, timezone
 from typing import Optional
 
@@ -35,17 +36,29 @@ def generate_temp_password() -> str:
 def temp_password_expiry() -> datetime:
     return datetime.now(timezone.utc) + timedelta(hours=settings.temp_password_expire_hours)
 
-def create_access_token(member_id: str) -> str:
-    expire = datetime.now(timezone.utc) + timedelta(minutes=settings.access_token_expire_minutes)
-    payload = {"sub": member_id, "exp": expire, "type": "access"}
+
+def _create_token(member_id: str, token_type: str, lifetime: timedelta) -> str:
+    now = datetime.now(timezone.utc)
+    payload = {
+        "sub": member_id,
+        "type": token_type,
+        "jti": uuid.uuid4().hex,
+        "iat": now,
+        "exp": now + lifetime,
+    }
     return jwt.encode(payload, settings.jwt_secret_key, algorithm=settings.jwt_algorithm)
+
+
+def create_access_token(member_id: str) -> str:
+    return _create_token(
+        member_id, "access", timedelta(minutes=settings.access_token_expire_minutes)
+    )
 
 
 def create_refresh_token(member_id: str) -> str:
-    expire = datetime.now(timezone.utc) + timedelta(days=settings.refresh_token_expire_days)
-    payload = {"sub": member_id, "exp": expire, "type": "refresh"}
-    return jwt.encode(payload, settings.jwt_secret_key, algorithm=settings.jwt_algorithm)
-
+    return _create_token(
+        member_id, "refresh", timedelta(days=settings.refresh_token_expire_days)
+    )
 
 def _decode_token(token: str, expected_type: str) -> Optional[str]:
     try:

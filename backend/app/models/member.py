@@ -9,17 +9,18 @@ from app.database import Base
 class Member(Base):
     __tablename__ = "members"
     __table_args__ = (
-        CheckConstraint("is_minor = True OR phone_number IS NOT NULL OR email IS NOT NULL",
-                         name ="check_adult_has_contact",
-                         ),
-         CheckConstraint(
-        "phone_number IS NULL OR phone_number ~ '^[0-9]{10}$'",
-        name="check_phone_format",
-    ),
-    CheckConstraint(
-        "id_number IS NULL OR id_number ~ '^[0-9]{8}$'",
-        name="check_id_number_format"
-                   ),
+        CheckConstraint(
+            "is_minor = True OR phone_number IS NOT NULL OR email IS NOT NULL",
+            name="check_adult_has_contact",
+        ),
+        CheckConstraint(
+            r"phone_number IS NULL OR phone_number ~ '^\+254[17][0-9]{8}$'",
+            name="check_phone_format",
+        ),
+        CheckConstraint(
+            "id_number IS NULL OR id_number ~ '^[0-9]{8}$'",
+            name="check_id_number_format",
+        ),
     )
     
     id = Column(UUID(as_uuid=True), primary_key = True, default = uuid.uuid4)
@@ -40,7 +41,7 @@ class Member(Base):
     created_at = Column(DateTime(timezone=True),server_default = func.now(),nullable=False)
     
     family = relationship("Family", back_populates = "members")
-    member_roles = relationship("MemberRole", back_populates = "member",foreign_keys=["MemberRole.member_id"])
+    member_roles = relationship("MemberRole", back_populates = "member",foreign_keys="[MemberRole.member_id]")
     
     
  

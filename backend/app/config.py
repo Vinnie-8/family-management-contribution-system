@@ -1,5 +1,6 @@
 from urllib.parse import quote_plus
 from pydantic_settings import BaseSettings,SettingsConfigDict
+from typing import List
 
 class Settings(BaseSettings):
     db_user : str
@@ -9,6 +10,7 @@ class Settings(BaseSettings):
     db_name : str
     
     redis_url: str = "redis://localhost:6379/0"
+    cors_origins: List[str] = ["http://localhost:3000"]
     
     
     jwt_secret_key : str
