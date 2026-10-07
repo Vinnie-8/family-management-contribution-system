@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://Vinnie-8.github.io/family-management-contribution-system/user_research/summary/">
+        <link rel="canonical" href="https://Vinnie-8.github.io/family-management-contribution-system/Project_ERD_Diagram/feature_auth_erd/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../../Database_design_and_normalization/normal_forms/">
       
-      
-        <link rel="next" href="../feedback/">
       
       
         
@@ -25,7 +23,7 @@
     
     
       
-        <title>Summary - Family-Management-Contribution-System-Documentation</title>
+        <title>Authentication ERD - Family-Management-Contribution-System-Documentation</title>
       
     
     
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#conclusion" class="md-skip">
+        <a href="#feature-authentication-entity-relationship-diagram-build-notes" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Summary
+              Authentication ERD
             
           </span>
         </div>
@@ -228,13 +226,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../user_research/" class="md-tabs__link">
           
   
   
@@ -310,11 +306,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../Project_ERD_Diagram/feature_auth_erd/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -392,31 +390,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -434,7 +429,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -452,7 +447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../user_research/" class="md-nav__link">
         
   
   
@@ -477,35 +472,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Summary
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../user_research/summary/" class="md-nav__link">
         
   
   
@@ -521,46 +491,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -573,7 +503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../feedback/" class="md-nav__link">
+      <a href="../../user_research/feedback/" class="md-nav__link">
         
   
   
@@ -900,28 +830,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -939,7 +872,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -954,10 +887,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Project_ERD_Diagram/feature_auth_erd/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication ERD
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -973,6 +933,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-flow-from-organization-to-active-member" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Flow — from organization to active member
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-inside-featureauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's inside feature/auth
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entity-relationship-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity-Relationship Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-was-built-layered-bottom-to-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it was built — layered, bottom to top
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-onboarding-login-forced-change-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The onboarding → login → forced change flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-measures-built-into-this-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security measures built into this feature
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-deliberately-deferred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's deliberately deferred
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1002,29 +1070,176 @@
 
 
 
-  <h1>Summary</h1>
-
-<h2 id="conclusion">Conclusion</h2>
-<p>Talking to these four family members — a young professional who just wants paying his dues to be as easy as tapping his phone, an older Treasurer-adjacent relative tired of doing money math in his head, a Secretary who dreads the December scramble to compile a year's worth of records before the AGM, and a busy 30-something who's genuinely afraid of missing family events because work crowds everything else out — made one thing clear: this was never really a request for an "app." It was a request to be relieved of a mental load that's been quietly falling on whoever happens to be paying attention, or holding the role, at any given moment.</p>
-<p>What stood out most was how consistent the underlying need was, even though the four people asking for it couldn't be more different in age, role, and comfort with technology. Nobody asked for something flashy.</p>
-<div class="admonition info inline end">
-<p class="admonition-title">Example</p>
-<p>Every feature built from here on should be traceable
-back to a real thing a real family member said, 
-not just to what seemed technically interesting to build.</p>
-</div>
-<p>They asked for reminders that actually reach them, numbers they don't have to double-check by hand, reports that write themselves instead of being assembled under deadline pressure, and confirmation that a payment really went through. Small, specific, entirely reasonable asks — and together, they form a pretty complete blueprint for what "done well" looks like for this system. </p>
-<h2 id="references">References</h2>
+<h1 id="feature-authentication-entity-relationship-diagram-build-notes">Feature: Authentication — Entity-Relationship Diagram &amp; Build Notes</h1>
+<p><code>feature/auth</code> is complete: identity, Chairman-issued onboarding, login,
+roles, and the audit-log foundation every later branch builds on.</p>
+<h2 id="introduction"><mark>Introduction</mark></h2>
+<p>Every feature in this system — campaigns, pledges, payments, meetings, reports — depends on one question being answered first: who is doing this, and are they allowed to? feature/auth exists to answer that question properly, once, in a way every later branch can simply rely on rather than re-solving.</p>
+<p>This isn't open self-registration. The family already has real, existing governance — a Chairman, a Secretary, a Treasurer — and the system is built to work the way the family actually operates, not to replace it with a generic sign-up form. A member never creates their own account. Membership is issued, deliberately, by someone with the authority to issue it, the same way it would be in a real family meeting: the Chairman says who's in, and the system reflects that decision rather than second-guessing it.</p>
+<p>The feature covers five things, each building on the one before it: the family itself as the root of the whole system, the people who belong to it, the roles those people can hold, the credentials that let them prove who they are, and an immutable record of everything that happens along the way. Nothing in this feature is throwaway scaffolding — every table, every constraint, every security decision here is the floor the other twelve feature branches stand on.</p>
+<h2 id="the-flow-from-organization-to-active-member"><mark>The Flow — from organization to active member</mark></h2>
+<p>It starts with the family itself. In this system, a family is the organization — the single tenant the whole platform serves. That root record is established once, holding nothing more than a name and a creation timestamp, and everything else in the database — every member, every campaign, every payment — ultimately traces back to it through a family_id. The schema is built so that supporting more than one family later is possible without a redesign, but v1 deliberately runs with exactly one: this isn't a multi-tenant SaaS product yet, it's one real family's system, built properly from day one.</p>
+<p>Once the family exists, someone has to be its first Chairman — the person whose authority everything else flows from. From that point on, onboarding a new member is entirely the Chairman's (or Secretary's) action, not the member's own. The Chairman fills in a new member's basic details — their name, and at least a phone number or an email, so there's somewhere to actually deliver their credentials — and submits it. Nothing about this request mentions which family the new member belongs to; that's deliberately never something the caller gets to choose. It's taken directly from the Chairman's own session, so there's no path by which anyone could onboard a member into a family that isn't theirs.</p>
+<p>The moment that request lands, the system generates a temporary password — a short, random string built to avoid characters that look alike on a small phone screen, since this is often read off an SMS by someone who isn't especially comfortable with technology. That password is hashed immediately, the same way any real password would be, and the plain version is never written to the database at all — it exists only long enough to be handed off for delivery, and then it's gone. Alongside it, the system marks this member as needing to change their password before doing anything else, and sets a 48-hour clock on how long that temporary credential is allowed to remain valid.</p>
+<p>The new member receives that password — today, as a line printed to a console standing in for a real SMS gateway that doesn't exist yet, but written so that swapping in a real one later changes nothing about how onboarding itself works. They log in with it, and the system checks, in order: does this person actually exist, is their account active, has the 48-hour window already closed, and does the password they typed actually match what was issued. If all of that holds, they're let in — but not all the way in. Because this is still a temporary password, every part of the system except the "change your password" action is closed to them. They can't view a campaign, can't make a payment, can't do anything else, until they've replaced it with something only they know.</p>
+<p>Changing it is itself a small, deliberately careful step — the member has to prove they still know the temporary password before they're allowed to replace it, even though they're already holding a valid session token. That's not redundant; it's what stops a stolen token alone from being enough to lock the real member out of their own account. Once the new password is set, the temporary one is gone for good, the forced-change flag clears, and the member is sent back to log in fresh — this time with full access, shaped by whatever roles the Chairman has assigned them.</p>
+<p>And every single step along that path — the family's creation, the onboarding, the first login, the password change — leaves a permanent, unchangeable trace: who did it, what changed, and when. Not as an afterthought bolted on at the end, but as part of the same action, inside the same transaction, from the very first branch of this project onward.</p>
+<h2 id="whats-inside-featureauth">What's inside feature/auth</h2>
 <ul>
 <li>
-<p><a href="https://www.userinterviews.com/ux-research-field-guide-chapter/what-is-user-research">User Interviews</a></p>
+<p><strong>Five database tables</strong> </p>
+<p>Family, Member, Role, MemberRole, AuditLog — with foreign keys, unique constraints, and check constraints enforcing the rules above at the database level, not just trusted to application code.</p>
 </li>
 <li>
-<p><a href="https://uxplanet.org/ultimate-guide-to-user-research-bed4a57d260">Guide to user research</a></p>
+<p><strong>Password security</strong> </p>
+<p>bcrypt hashing for every password, temporary or permanent; cryptographically secure random generation for temporary passwords.</p>
 </li>
 <li>
-<p><a href="https://www.youtube.com/watch?v=xkXaPOb9Qxo">Youtube video</a></p>
+<p><strong>Session handling</strong> </p>
+<p>JWT-based access tokens, signed with a secret kept out of version control.</p>
 </li>
+<li>
+<p><strong>A universal active-account gate</strong> </p>
+<p>checked in exactly one place, so a deactivated member is blocked from everything the instant that happens, with no risk of a forgotten endpoint that never learned to check it.</p>
+</li>
+<li>
+<p><strong>Role-based access control</strong> </p>
+<p>evaluated as the union of a member's roles, since one person can legitimately hold several at once.</p>
+</li>
+<li>
+<p><strong>A clean separation of layers</strong> </p>
+<p>database models, security primitives, business logic, request validation, and HTTP endpoints each live in their own place, so the same logic could be reused outside a web request if it ever needed to be.</p>
+</li>
+<li>
+<p><strong>An audit trail from the first commit</strong></p>
+<p>not retrofitted later, but built in from the very first feature, so every later branch inherits the same discipline automatically.</p>
+</li>
+</ul>
+<h2 id="entity-relationship-diagram">Entity-Relationship Diagram</h2>
+<pre class="mermaid"><code>erDiagram
+    FAMILIES ||--o{ MEMBERS : has
+    MEMBERS ||--o{ MEMBER_ROLES : holds
+    ROLES ||--o{ MEMBER_ROLES : "assigned as"
+    FAMILIES ||--o{ AUDIT_LOGS : scopes
+    MEMBERS ||--o{ AUDIT_LOGS : "acts in"
+
+    FAMILIES {
+        uuid id PK
+        string name
+        datetime created_at
+    }
+
+    MEMBERS {
+        uuid id PK
+        uuid family_id FK
+        string name
+        string phone_number UK
+        string email UK
+        string id_number UK
+        boolean is_minor
+        boolean is_active
+        string hashed_password
+        boolean must_change_password
+        datetime password_expires_at
+        datetime created_at
+    }
+
+    ROLES {
+        uuid id PK
+        string name UK
+        string description
+    }
+
+    MEMBER_ROLES {
+        uuid id PK
+        uuid member_id FK
+        uuid role_id FK
+        datetime assigned_at
+    }
+
+    AUDIT_LOGS {
+        uuid id PK
+        uuid family_id FK
+        uuid actor_member_id FK
+        string action
+        string entity_type
+        uuid entity_id
+        jsonb before_state
+        jsonb after_state
+        datetime created_at
+    }</code></pre>
+<p><strong>Five entities, two deliberate design choices worth highlighting:</strong></p>
+<ul>
+<li><strong><code>MEMBER_ROLES</code> is a junction table</strong>, not a single <code>role_id</code> column on
+  <code>MEMBERS</code> — because role assignment is many-to-many (a Chairman can
+  also be a contributing Member). A single foreign key can only ever
+  point at one role; the junction table is what lets a member hold
+  several roles at once.</li>
+<li><strong>Minors are <code>MEMBERS</code> rows too</strong>, not a separate table — <code>is_minor</code>
+  is a flag, with <code>phone_number</code>/<code>email</code>/<code>hashed_password</code> left <code>NULL</code>.
+  This keeps every other relationship that points at a member (future
+  Pledge, Payment, Attendance tables) working unchanged for minors,
+  with no parallel structures needed.</li>
+</ul>
+<h2 id="how-it-was-built-layered-bottom-to-top">How it was built — layered, bottom to top</h2>
+<pre class="mermaid"><code>flowchart TD
+    A["models/ — SQLAlchemy ORM&lt;br/&gt;5 tables, constraints, relationships"] --&gt; B["Alembic migration&lt;br/&gt;generated &amp; applied to Postgres"]
+    B --&gt; C["core/ — security, exceptions, permissions&lt;br/&gt;password hashing · JWT · RBAC"]
+    C --&gt; D["services/ — business logic&lt;br/&gt;audit_service · auth_service"]
+    D --&gt; E["schemas/ — Pydantic validation&lt;br/&gt;request/response contracts"]
+    E --&gt; F["routers/ — HTTP endpoints&lt;br/&gt;/auth/onboard · /auth/login · /auth/change-password"]</code></pre>
+<p>Each layer only depends on the one below it — <code>routers</code> knows about
+<code>schemas</code> and <code>services</code>, but <code>services</code> never imports FastAPI at all.
+That separation is what lets the same <code>auth_service.onboard_member()</code>
+function be called from a web request today, and from a CLI script or
+background job later, with zero changes.</p>
+<h2 id="the-onboarding-login-forced-change-flow">The onboarding → login → forced change flow</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant C as Chairman
+    participant R as Router
+    participant S as auth_service
+    participant DB as Postgres
+
+    C-&gt;&gt;R: POST /auth/onboard
+    R-&gt;&gt;S: onboard_member()
+    S-&gt;&gt;S: generate temp password, hash it
+    S-&gt;&gt;DB: INSERT member (must_change_password=true)
+    S--&gt;&gt;C: temp password "sent" via SMS stub
+
+    Note over C: Member logs in with temp password
+
+    C-&gt;&gt;R: POST /auth/login
+    R-&gt;&gt;S: authenticate()
+    S-&gt;&gt;DB: verify is_active, password hash, expiry
+    S--&gt;&gt;C: access token (must_change_password=true)
+
+    Note over C: Restricted to change-password only
+
+    C-&gt;&gt;R: POST /auth/change-password
+    R-&gt;&gt;S: change_password()
+    S-&gt;&gt;DB: UPDATE hashed_password, clear flags
+    S--&gt;&gt;C: success — must log in again</code></pre>
+<h2 id="security-measures-built-into-this-feature">Security measures built into this feature</h2>
+<ul>
+<li><strong>Passwords are hashed with bcrypt</strong>, never stored in plain text — not
+  even the temporary one.</li>
+<li><strong>JWT-based sessions</strong>, signed with a secret key kept out of version
+  control (<code>.env</code>, gitignored).</li>
+<li><strong><code>is_active</code> is checked in exactly one place</strong> — the point a token
+  resolves back to a member — so a deactivated member is blocked from
+  <em>everything</em> the instant Chairman flips the switch.</li>
+<li><strong>Role-based access control evaluates the union of a member's roles</strong>,
+  not a single assumed role, since one person can hold several.</li>
+<li><strong>Database-level <code>CHECK</code> constraints back up application-level
+  validation</strong> — e.g. an adult member must have a phone or email,
+  enforced by Postgres itself, not just trusted to the API layer.</li>
+<li><strong>Every onboarding, login, and password change writes an immutable
+  audit log entry</strong> — actor, action, before/after state, timestamp.</li>
+</ul>
+<h2 id="whats-deliberately-deferred">What's deliberately deferred</h2>
+<ul>
+<li>Real SMS delivery — <code>send_sms()</code> is a stub that logs to console;
+  swapping in a gateway later requires no change to the code.</li>
 </ul>
 
 
@@ -1061,7 +1276,7 @@ not just to what seemed technically interesting to build.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+          <a href="../../Database_design_and_normalization/normal_forms/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Normal Forms Case Study">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1071,27 +1286,11 @@ not just to what seemed technically interesting to build.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Overview
+                Normal Forms Case Study
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../feedback/" class="md-footer__link md-footer__link--next" aria-label="Next: Feedback">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Feedback
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     

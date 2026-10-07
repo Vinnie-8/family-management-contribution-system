@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://Vinnie-8.github.io/family-management-contribution-system/user_research/summary/">
+        <link rel="canonical" href="https://Vinnie-8.github.io/family-management-contribution-system/Database_design_and_normalization/normal_forms/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../db_design_normalization/">
       
       
-        <link rel="next" href="../feedback/">
+        <link rel="next" href="../../Project_ERD_Diagram/feature_auth_erd/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Summary - Family-Management-Contribution-System-Documentation</title>
+        <title>Normal Forms Case Study - Family-Management-Contribution-System-Documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#conclusion" class="md-skip">
+        <a href="#normal-forms-in-dbms" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Summary
+              Normal Forms Case Study
             
           </span>
         </div>
@@ -228,13 +228,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../user_research/" class="md-tabs__link">
           
   
   
@@ -290,11 +288,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../Database_design_and_normalization/db_design_normalization/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../db_design_normalization/" class="md-tabs__link">
           
   
   
@@ -392,31 +392,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -434,7 +431,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -452,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../user_research/" class="md-nav__link">
         
   
   
@@ -477,35 +474,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Summary
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../user_research/summary/" class="md-nav__link">
         
   
   
@@ -521,46 +493,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -573,7 +505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../feedback/" class="md-nav__link">
+      <a href="../../user_research/feedback/" class="md-nav__link">
         
   
   
@@ -783,28 +715,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -822,7 +757,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -840,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Database_design_and_normalization/db_design_normalization/" class="md-nav__link">
+      <a href="../db_design_normalization/" class="md-nav__link">
         
   
   
@@ -865,10 +800,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Database_design_and_normalization/normal_forms/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Normal Forms Case Study
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -884,6 +846,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-using-normal-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benefits of using Normal Forms
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-normal-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TYPES OF NORMAL FORMS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-challenges-of-over-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Challenges of Over-Normalization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-normalization-and-denormalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Normalization and Denormalization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-normalization-is-not-followed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When Normalization is Not Followed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-risks-of-breaking-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Risks of Breaking Normalization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1002,30 +1061,134 @@
 
 
 
-  <h1>Summary</h1>
-
-<h2 id="conclusion">Conclusion</h2>
-<p>Talking to these four family members — a young professional who just wants paying his dues to be as easy as tapping his phone, an older Treasurer-adjacent relative tired of doing money math in his head, a Secretary who dreads the December scramble to compile a year's worth of records before the AGM, and a busy 30-something who's genuinely afraid of missing family events because work crowds everything else out — made one thing clear: this was never really a request for an "app." It was a request to be relieved of a mental load that's been quietly falling on whoever happens to be paying attention, or holding the role, at any given moment.</p>
-<p>What stood out most was how consistent the underlying need was, even though the four people asking for it couldn't be more different in age, role, and comfort with technology. Nobody asked for something flashy.</p>
-<div class="admonition info inline end">
+<h1 id="normal-forms-in-dbms"><mark>Normal Forms in DBMS</mark></h1>
+<p>Normal forms are a set of progressive rules (or design checkpoints) for relational schemas that reduce redundancy and prevent data anomalies. Each normal form ( 1NF, 2NF, 3NF, BCNF, 4NF, 5NF ) is stricter than the previous one: meeting a higher normal form implies the lower ones are satisfied. Think of them as layers of cleanliness for your tables: the deeper you go, the fewer redundancy and integrity problems you’ll have.</p>
+<h2 id="benefits-of-using-normal-forms"><mark>Benefits of using Normal Forms</mark></h2>
+<ul>
+<li>Reduce duplicate data and wasted storage.</li>
+<li>Prevent insert, update, and delete anomalies.</li>
+<li>Improve data consistency and integrity.</li>
+<li>Make the schema easier to maintain and evolve.</li>
+</ul>
+<div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>Every feature built from here on should be traceable
-back to a real thing a real family member said, 
-not just to what seemed technically interesting to build.</p>
 </div>
-<p>They asked for reminders that actually reach them, numbers they don't have to double-check by hand, reports that write themselves instead of being assembled under deadline pressure, and confirmation that a payment really went through. Small, specific, entirely reasonable asks — and together, they form a pretty complete blueprint for what "done well" looks like for this system. </p>
-<h2 id="references">References</h2>
+<ul>
+<li>Let's break down the various normal forms step-by-step to understand the conditions that need to be satisfied at each level:</li>
+</ul>
+<h2 id="types-of-normal-forms">TYPES OF NORMAL FORMS</h2>
+<ol>
+<li><strong>First Normal Form (1NF): Eliminating Duplicate Records</strong></li>
+</ol>
+<p>A table is in 1NF if it satisfies the following conditions:</p>
+<ul>
+<li>All columns contain atomic values (i.e., indivisible values).</li>
+<li>Each row is unique (i.e., no duplicate rows).</li>
+<li>Each column has a unique name.</li>
+<li>The order in which data is stored does not matter.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>1NF Violation: If a table has a column "Phone Numbers" that stores multiple phone numbers in a single cell, it violates 1NF. To bring it into 1NF, you need to separate phone numbers into individual rows.</p>
+</div>
+<ol start="2">
+<li><strong>Second Normal Form (2NF): Eliminating Partial Dependency</strong></li>
+</ol>
+<p>A relation is in 2NF if it satisfies the conditions of 1NF and additionally, contains no partial dependency exists, meaning every non-prime attribute (non-key attribute) must depend on the entire primary key, not just a part of it.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>For a composite key (StudentID, CourseID), if the "StudentName" depends only on "StudentID" and not on the entire key, it violates 2NF. To normalize, move StudentName into a separate table where it depends only on "StudentID"</p>
+</div>
+<ol start="3">
+<li><strong>Third Normal Form (3NF): Eliminating Transitive Dependency</strong></li>
+</ol>
+<p>A relation is in 3NF if it satisfies 2NF and additionally, there are no transitive dependencies. In simpler terms, non-prime attributes should not depend on other non-prime attributes.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Consider a table with (StudentID, CourseID, Instructor). If Instructor depends on "CourseID", and "CourseID" depends on "StudentID", then Instructor indirectly depends on "StudentID", which violates 3NF. To resolve this, place Instructor in a separate table linked by "CourseID".</p>
+</div>
+<ol start="4">
+<li><strong>Boyce-Codd Normal Form (BCNF): The Strongest Form of 3NF</strong></li>
+</ol>
+<p>BCNF is a stricter version of 3NF where for every non-trivial functional dependency (X → Y), X must be a superkey (a unique identifier for a record in the table).</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>If a table has a dependency (StudentID, CourseID) → Instructor, but neither "StudentID" nor "CourseID" is a superkey, then it violates BCNF. To bring it into BCNF, decompose the table so that each determinant is a candidate key.</p>
+</div>
+<ol start="5">
+<li><strong>Fourth Normal Form (4NF): Removing Multi-Valued Dependencies</strong></li>
+</ol>
+<p>A table is in 4NF if it is in BCNF and has no multi-valued dependencies. A multi-valued dependency occurs when one attribute determines another, and both attributes are independent of all other attributes in the table.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Consider a table where (StudentID, Language, Hobby) are attributes. If a student can have multiple hobbies and languages, a multi-valued dependency exists. To resolve this, split the table into separate tables for Languages and Hobbies.</p>
+</div>
+<ol start="6">
+<li><strong>Fifth Normal Form (5NF): Eliminating Join Dependency</strong></li>
+</ol>
+<p>5NF is achieved when a table is in 4NF and all join dependencies are removed. This form ensures that every table is fully decomposed into smaller tables that are logically connected without losing information.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>If a table contains (StudentID, Course, Instructor) and there is a dependency where all combinations of these columns are needed for a specific relationship, you would split them into smaller tables to remove redundancy.</p>
+</div>
+<h2 id="common-challenges-of-over-normalization">Common Challenges of Over-Normalization</h2>
+<p>While normalization is a powerful tool for optimizing databases, it's important not to over-normalize your data.</p>
+<p>Excessive normalization can lead to:</p>
 <ul>
 <li>
-<p><a href="https://www.userinterviews.com/ux-research-field-guide-chapter/what-is-user-research">User Interviews</a></p>
+<p>Complex Queries: Too many tables may result in multiple joins, making queries slow and difficult to manage.</p>
 </li>
 <li>
-<p><a href="https://uxplanet.org/ultimate-guide-to-user-research-bed4a57d260">Guide to user research</a></p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=xkXaPOb9Qxo">Youtube video</a></p>
+<p>Performance Overhead: Additional processing required for joins in overly normalized databases may hurt performance, especially in large-scale systems.</p>
 </li>
 </ul>
+<p>In many cases, <strong>denormalization (combining tables to reduce the need for complex joins)</strong> is used for performance optimization in specific applications, such as reporting systems.</p>
+<h2 id="when-to-use-normalization-and-denormalization">When to Use Normalization and Denormalization</h2>
+<p><strong>Normalization</strong> is best suited for transactional systems where data integrity is paramount, such as banking systems and enterprise applications.</p>
+<p><strong>Denormalization</strong> is ideal for read-heavy applications like data warehousing and reporting systems where performance and query speed are more critical than data integrity.</p>
+<h2 id="when-normalization-is-not-followed"><mark>When Normalization is Not Followed</mark></h2>
+<p>Rules of database normalization are intentionally skipped or broken—a process known as denormalization—when strict table separation hurts system performance or speed.</p>
+<ul>
+<li>
+<p><strong>Read-Heavy Workloads:</strong> </p>
+<p>When an application reads data much more often than it writes (such as a public-facing catalog or dashboard), joining dozens of normalized tables slows down query response times. Users on Stack Overflow generally agree that denormalizing helps avoid excessive and costly JOIN operations.</p>
+</li>
+<li>
+<p><strong>Data Warehouses and Reporting:</strong> </p>
+<p>Analytical systems, business intelligence tools, and OLAP (Online Analytical Processing) cubes store pre-aggregated or redundant data (like star or snowflake schemas with materialized views) to speed up complex historical reporting.</p>
+</li>
+<li>
+<p><strong>High-Performance / Low-Latency Systems:</strong> </p>
+<p>When real-time gaming, high-frequency trading, or large-scale web services cannot afford the CPU overhead of stitching together scattered rows across multiple tables, data is duplicated.</p>
+</li>
+<li>
+<p><strong>Prototyping and Early Development:</strong> </p>
+<p>During fast iteration, small projects, or simple schemas, rigid normalization adds unnecessary design and coding complexity before performance bottlenecks even exist.</p>
+</li>
+<li>
+<p><strong>Archival and Snapshots:</strong> </p>
+<p>Storing historical snapshots (such as freezing a customer's billing address on an old invoice) intentionally breaks normalization so past records do not change if the live user record updates.</p>
+</li>
+</ul>
+<h2 id="the-risks-of-breaking-normalization"><mark>The Risks of Breaking Normalization</mark></h2>
+<p>When you bypass normalization, you accept trade-offs that your application code must manage:</p>
+<ul>
+<li>
+<p>Data Anomalies: </p>
+<p>Increased risk of update, insertion, and deletion anomalies where duplicate data falls out of sync.</p>
+</li>
+<li>
+<p>Higher Maintenance: </p>
+<p>You often need extra logic, background jobs, or database triggers to keep redundant data consistent.</p>
+</li>
+</ul>
+<h2 id="references">References</h2>
+<p><a href="https://www.geeksforgeeks.org/dbms/normal-forms-in-dbms/">Normal forms</a></p>
+<p><a href="https://www.youtube.com/watch?v=J-drts33N8g">Watch video about normal forms</a></p>
+<p><a href="https://www.youtube.com/watch?v=GFQaEYEc8_8&amp;t=71s">Different types of normal forms</a></p>
+<p><a href="https://www.youtube.com/watch?v=IBEuwmYsMKI">DBMS Normal Forms</a></p>
+<p><a href="https://stackoverflow.com/questions/2065227/when-is-a-good-time-to-break-normalization-rules?__cf_chl_tk=IdSw2iKzuoCgq.Rqz0BGxucV14cMpZfXTcv9wQnBpms-1791360275-1.0.1.1-SVJnCP8Cs6ziszMlKVW63AUM_cJEgn2gVNlLdIoAyWM">Breaking Normalization Rules</a></p>
+<p><a href="https://www.quora.com/How-can-you-determine-when-is-normalization-not-needed">When normalization is not needed</a></p>
 
 
 
@@ -1061,7 +1224,7 @@ not just to what seemed technically interesting to build.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+          <a href="../db_design_normalization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Case Study">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1071,20 +1234,20 @@ not just to what seemed technically interesting to build.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Overview
+                Case Study
               </div>
             </div>
           </a>
         
         
           
-          <a href="../feedback/" class="md-footer__link md-footer__link--next" aria-label="Next: Feedback">
+          <a href="../../Project_ERD_Diagram/feature_auth_erd/" class="md-footer__link md-footer__link--next" aria-label="Next: Authentication ERD">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Feedback
+                Authentication ERD
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -2,30 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://Vinnie-8.github.io/family-management-contribution-system/</loc>
-         <lastmod>2026-09-28</lastmod>
+         <lastmod>2026-10-07</lastmod>
     </url>
     <url>
          <loc>https://Vinnie-8.github.io/family-management-contribution-system/Authentication_Authorization_study/auth_casestudy/</loc>
-         <lastmod>2026-09-28</lastmod>
+         <lastmod>2026-10-07</lastmod>
     </url>
     <url>
          <loc>https://Vinnie-8.github.io/family-management-contribution-system/Database_design_and_normalization/db_design_normalization/</loc>
-         <lastmod>2026-09-28</lastmod>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://Vinnie-8.github.io/family-management-contribution-system/Database_design_and_normalization/normal_forms/</loc>
+         <lastmod>2026-10-07</lastmod>
+    </url>
+    <url>
+         <loc>https://Vinnie-8.github.io/family-management-contribution-system/Project_ERD_Diagram/feature_auth_erd/</loc>
+         <lastmod>2026-10-07</lastmod>
     </url>
     <url>
          <loc>https://Vinnie-8.github.io/family-management-contribution-system/fastapi_auth_casestudy/fastapi_authentication/</loc>
-         <lastmod>2026-09-28</lastmod>
+         <lastmod>2026-10-07</lastmod>
     </url>
     <url>
          <loc>https://Vinnie-8.github.io/family-management-contribution-system/user_research/</loc>
-         <lastmod>2026-09-28</lastmod>
+         <lastmod>2026-10-07</lastmod>
     </url>
     <url>
          <loc>https://Vinnie-8.github.io/family-management-contribution-system/user_research/feedback/</loc>
-         <lastmod>2026-09-28</lastmod>
+         <lastmod>2026-10-07</lastmod>
     </url>
     <url>
          <loc>https://Vinnie-8.github.io/family-management-contribution-system/user_research/summary/</loc>
-         <lastmod>2026-09-28</lastmod>
+         <lastmod>2026-10-07</lastmod>
     </url>
 </urlset>
