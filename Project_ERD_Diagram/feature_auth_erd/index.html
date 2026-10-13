@@ -961,10 +961,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-flow-from-organization-to-active-member" class="md-nav__link">
+  <a href="#the-flow-from-registration-to-active-member" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Flow — from organization to active member
+        The Flow — from registration to active member
       
     </span>
   </a>
@@ -1005,10 +1005,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-onboarding-login-forced-change-flow" class="md-nav__link">
+  <a href="#the-registration-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The onboarding → login → forced change flow
+        The registration flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-onboarding-activation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The onboarding → activation flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#households-and-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Households and branches
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minors-and-coming-of-age" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minors and coming of age
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minors and coming of age">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#member-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Member lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#date-of-birth-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Date of birth privacy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-every-request-is-checked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How every request is checked
       
     </span>
   </a>
@@ -1071,76 +1143,139 @@
 
 
 <h1 id="feature-authentication-entity-relationship-diagram-build-notes">Feature: Authentication — Entity-Relationship Diagram &amp; Build Notes</h1>
-<p><code>feature/auth</code> is complete: identity, Chairman-issued onboarding, login,
-roles, and the audit-log foundation every later branch builds on.</p>
+<p><code>feature/auth</code> covers identity, family registration, household structure, invite-based onboarding, login, roles, privacy of personal data, and the audit-log foundation every later branch builds on.</p>
 <h2 id="introduction"><mark>Introduction</mark></h2>
 <p>Every feature in this system — campaigns, pledges, payments, meetings, reports — depends on one question being answered first: who is doing this, and are they allowed to? feature/auth exists to answer that question properly, once, in a way every later branch can simply rely on rather than re-solving.</p>
-<p>This isn't open self-registration. The family already has real, existing governance — a Chairman, a Secretary, a Treasurer — and the system is built to work the way the family actually operates, not to replace it with a generic sign-up form. A member never creates their own account. Membership is issued, deliberately, by someone with the authority to issue it, the same way it would be in a real family meeting: the Chairman says who's in, and the system reflects that decision rather than second-guessing it.</p>
-<p>The feature covers five things, each building on the one before it: the family itself as the root of the whole system, the people who belong to it, the roles those people can hold, the credentials that let them prove who they are, and an immutable record of everything that happens along the way. Nothing in this feature is throwaway scaffolding — every table, every constraint, every security decision here is the floor the other twelve feature branches stand on.</p>
-<h2 id="the-flow-from-organization-to-active-member"><mark>The Flow — from organization to active member</mark></h2>
-<p>It starts with the family itself. In this system, a family is the organization — the single tenant the whole platform serves. That root record is established once, holding nothing more than a name and a creation timestamp, and everything else in the database — every member, every campaign, every payment — ultimately traces back to it through a family_id. The schema is built so that supporting more than one family later is possible without a redesign, but v1 deliberately runs with exactly one: this isn't a multi-tenant SaaS product yet, it's one real family's system, built properly from day one.</p>
-<p>Once the family exists, someone has to be its first Chairman — the person whose authority everything else flows from. From that point on, onboarding a new member is entirely the Chairman's (or Secretary's) action, not the member's own. The Chairman fills in a new member's basic details — their name, and at least a phone number or an email, so there's somewhere to actually deliver their credentials — and submits it. Nothing about this request mentions which family the new member belongs to; that's deliberately never something the caller gets to choose. It's taken directly from the Chairman's own session, so there's no path by which anyone could onboard a member into a family that isn't theirs.</p>
-<p>The moment that request lands, the system generates a temporary password — a short, random string built to avoid characters that look alike on a small phone screen, since this is often read off an SMS by someone who isn't especially comfortable with technology. That password is hashed immediately, the same way any real password would be, and the plain version is never written to the database at all — it exists only long enough to be handed off for delivery, and then it's gone. Alongside it, the system marks this member as needing to change their password before doing anything else, and sets a 48-hour clock on how long that temporary credential is allowed to remain valid.</p>
-<p>The new member receives that password — today, as a line printed to a console standing in for a real SMS gateway that doesn't exist yet, but written so that swapping in a real one later changes nothing about how onboarding itself works. They log in with it, and the system checks, in order: does this person actually exist, is their account active, has the 48-hour window already closed, and does the password they typed actually match what was issued. If all of that holds, they're let in — but not all the way in. Because this is still a temporary password, every part of the system except the "change your password" action is closed to them. They can't view a campaign, can't make a payment, can't do anything else, until they've replaced it with something only they know.</p>
-<p>Changing it is itself a small, deliberately careful step — the member has to prove they still know the temporary password before they're allowed to replace it, even though they're already holding a valid session token. That's not redundant; it's what stops a stolen token alone from being enough to lock the real member out of their own account. Once the new password is set, the temporary one is gone for good, the forced-change flag clears, and the member is sent back to log in fresh — this time with full access, shaped by whatever roles the Chairman has assigned them.</p>
-<p>And every single step along that path — the family's creation, the onboarding, the first login, the password change — leaves a permanent, unchangeable trace: who did it, what changed, and when. Not as an afterthought bolted on at the end, but as part of the same action, inside the same transaction, from the very first branch of this project onward.</p>
+<p>The system is built for many families, and each one is its own private organisation. A family is created by one person, its Chairman, and only if they hold a registration code issued by the platform. After that, membership is never self-service. A member does not sign themselves up. The Chairman or Secretary decides who is in, places them in a household, and the system reflects that decision, the same way it would be settled in a real family meeting.</p>
+<p>The feature covers six things, each building on the one before it: the family as the root of its own data, the households inside it, the people who belong to those households, the roles those people can hold, the credentials that let them prove who they are, and an immutable record of everything that happens along the way. Nothing in this feature is throwaway scaffolding. Every table, every constraint, and every security decision here is the floor the other feature branches stand on.</p>
+<h2 id="the-flow-from-registration-to-active-member"><mark>The Flow — from registration to active member</mark></h2>
+<p>It starts with a registration code. The platform administrator generates a one-time code and hands it to the person who will be a family's Chairman. That code is stored hashed, can be used once, and expires. Without it, nobody can create a family, which keeps the pilot free of spam and lets us decide who joins.</p>
+<p>The future Chairman opens the register page and submits the code, a family name, the family's age limit for minors (18 unless they choose otherwise), their own details, and a password of their own choosing. Everything that follows happens in a single database transaction: the family is created, its first household is created, the Chairman is created as an adult member in that household, the <code>chairman</code> and <code>member</code> roles are assigned, the Chairman is made head of the household, and the code is marked as used. If any step fails, nothing is saved, so there can never be a family without a Chairman. Because the Chairman chose their own password here, they are logged in immediately, with no temporary credential at all.</p>
+<p>From that point on, onboarding is entirely the Chairman's (or Secretary's) action. They give a new member's name, ID number, a phone number or an email so there is somewhere to deliver the invite, and the household the member belongs to. Nothing in that request says which family the member joins. That is never something the caller gets to choose. It is taken from the Chairman's own session, so there is no way to onboard a member into a family that isn't yours.</p>
+<p>The system creates the member with no password and generates an activation token, a random 32-byte secret. Only its hash is stored. The plain token exists just long enough to be placed inside an invite link and sent by SMS or email, today through a stub that prints to the console, written so that a real gateway can replace it without touching onboarding itself.</p>
+<p>The member opens the link and lands on a page asking for a new password. Opening the page uses up nothing, because SMS and email scanners often open links on their own. Only submitting the new password consumes the token. The system checks that it exists, belongs to this member, has not been used, and has not passed its 48-hour expiry. If all of that holds, the password is set, the token is marked used, and the member receives a login token in the same response. They are inside the app straight away, with the roles the Chairman assigned. The link only ever went to the member's own phone or email, so opening it already proves who they are, and a second login would add friction without adding safety.</p>
+<p>Children are handled differently. A minor is onboarded as a minor, and the only extra detail required is their date of birth, which must put them under the family's age limit. Adults are never asked for a date of birth. A minor gets no account and no invite. The Chairman may record an optional invite contact, a parent's or guardian's phone or email, to be used later. A daily job watches for minors who have reached their family's age limit. If an invite contact exists, the activation link is sent there automatically. If it does not, the Chairman and Secretary are notified to add a contact and send the invite themselves. When the new adult activates, they enter their own phone or email, set a password, and the system deletes their date of birth and the invite contact. From then on, it holds no birth date for them at all.</p>
+<p>Households follow the way families actually grow. A minor lives in their guardian's household. An adult child stays in their parents' household until they create their own. When a son marries, the Chairman or Secretary creates a new household for him and his wife, links it to the household it branched from, moves him in, onboards his wife as a new member, and names him head. It is still one family, and the branches can be traced for as long as the system exists. Contributions belong to individual members, not households, so moving house never moves anyone's financial history.</p>
+<p>Finally, every step along that path, from the family's registration to the invite, the activation, every login, every household change and every date-of-birth lookup, leaves a permanent, unchangeable trace: who did it, what changed, and when. It isn't added afterwards. It is part of the same action, inside the same transaction, from the very first branch of this project onward.</p>
 <h2 id="whats-inside-featureauth">What's inside feature/auth</h2>
 <ul>
 <li>
-<p><strong>Five database tables</strong> </p>
-<p>Family, Member, Role, MemberRole, AuditLog — with foreign keys, unique constraints, and check constraints enforcing the rules above at the database level, not just trusted to application code.</p>
+<p><strong>Eight database tables</strong></p>
+<p>Family, Household, Member, Role, MemberRole, ActivationToken, RegistrationCode, AuditLog — with foreign keys, unique constraints, and check constraints enforcing the rules above at the database level, not just trusted to application code.</p>
 </li>
 <li>
-<p><strong>Password security</strong> </p>
-<p>bcrypt hashing for every password, temporary or permanent; cryptographically secure random generation for temporary passwords.</p>
+<p><strong>Registration codes</strong></p>
+<p>One-time, expiring, stored hashed. They control who may create a family, and are the single gate that can later be swapped for phone or email verification.</p>
 </li>
 <li>
-<p><strong>Session handling</strong> </p>
+<p><strong>Households with lineage</strong></p>
+<p>Every member belongs to exactly one household, and a household can record the household it branched from, so the family tree of branches is preserved.</p>
+</li>
+<li>
+<p><strong>Per-family minor rules</strong></p>
+<p>Each family sets its own age limit. Minor status is computed from date of birth and that limit, never stored, so it can never go stale.</p>
+</li>
+<li>
+<p><strong>Invite-based onboarding with automatic login</strong></p>
+<p>One-time activation links with hashed, single-use, expiring tokens. The member sets their own password and is logged in at once.</p>
+</li>
+<li>
+<p><strong>Automatic coming-of-age</strong></p>
+<p>A daily job turns minors into invited adults when they reach their family's limit, with the Chairman as the fallback when no contact exists.</p>
+</li>
+<li>
+<p><strong>Private date of birth</strong></p>
+<p>Stored only for minors, deleted at activation, visible to the member themselves, and available to the Chairman or Secretary only through a lookup that requires a stated reason and is audited.</p>
+</li>
+<li>
+<p><strong>Password security</strong></p>
+<p>bcrypt hashing for every password; cryptographically secure random generation for every token.</p>
+</li>
+<li>
+<p><strong>Session handling</strong></p>
 <p>JWT-based access tokens, signed with a secret kept out of version control.</p>
 </li>
 <li>
-<p><strong>A universal active-account gate</strong> </p>
-<p>checked in exactly one place, so a deactivated member is blocked from everything the instant that happens, with no risk of a forgotten endpoint that never learned to check it.</p>
+<p><strong>A universal active-account gate</strong></p>
+<p>Checked in exactly one place, so a deactivated member is blocked from everything the instant that happens, with no risk of a forgotten endpoint that never learned to check it.</p>
 </li>
 <li>
-<p><strong>Role-based access control</strong> </p>
-<p>evaluated as the union of a member's roles, since one person can legitimately hold several at once.</p>
+<p><strong>Role-based access control</strong></p>
+<p>Evaluated as the union of a member's roles, since one person can legitimately hold several at once.</p>
 </li>
 <li>
-<p><strong>A clean separation of layers</strong> </p>
-<p>database models, security primitives, business logic, request validation, and HTTP endpoints each live in their own place, so the same logic could be reused outside a web request if it ever needed to be.</p>
+<p><strong>Family isolation</strong></p>
+<p>Every query is scoped by the current member's <code>family_id</code>, so one family can never read another's data.</p>
+</li>
+<li>
+<p><strong>A clean separation of layers</strong></p>
+<p>Database models, security primitives, business logic, request validation, and HTTP endpoints each live in their own place, so the same logic could be reused outside a web request, such as the daily job, without changes.</p>
 </li>
 <li>
 <p><strong>An audit trail from the first commit</strong></p>
-<p>not retrofitted later, but built in from the very first feature, so every later branch inherits the same discipline automatically.</p>
+<p>Not retrofitted later, but built in from the very first feature, so every later branch inherits the same discipline automatically.</p>
 </li>
 </ul>
 <h2 id="entity-relationship-diagram">Entity-Relationship Diagram</h2>
 <pre class="mermaid"><code>erDiagram
+    REGISTRATION_CODES |o--o| FAMILIES : creates
+    FAMILIES ||--o{ HOUSEHOLDS : has
     FAMILIES ||--o{ MEMBERS : has
+    HOUSEHOLDS ||--o{ MEMBERS : contains
+    HOUSEHOLDS |o--o{ HOUSEHOLDS : "branched from"
     MEMBERS ||--o{ MEMBER_ROLES : holds
     ROLES ||--o{ MEMBER_ROLES : "assigned as"
+    MEMBERS ||--o{ ACTIVATION_TOKENS : receives
     FAMILIES ||--o{ AUDIT_LOGS : scopes
     MEMBERS ||--o{ AUDIT_LOGS : "acts in"
+
+    REGISTRATION_CODES {
+        uuid id PK
+        string code_hash UK
+        datetime expires_at
+        datetime used_at
+        uuid used_by_family_id FK
+        datetime created_at
+    }
 
     FAMILIES {
         uuid id PK
         string name
+        int age_of_majority "default 18"
+        datetime created_at
+    }
+
+    HOUSEHOLDS {
+        uuid id PK
+        uuid family_id FK
+        string name
+        uuid head_member_id FK "nullable"
+        uuid parent_household_id FK "nullable"
         datetime created_at
     }
 
     MEMBERS {
         uuid id PK
         uuid family_id FK
+        uuid household_id FK
         string name
         string phone_number UK
         string email UK
         string id_number UK
-        boolean is_minor
+        date date_of_birth "minors only, private"
+        string invite_contact "minors only, optional"
+        string hashed_password "null until activated"
         boolean is_active
-        string hashed_password
-        boolean must_change_password
-        datetime password_expires_at
+        datetime created_at
+    }
+
+    ACTIVATION_TOKENS {
+        uuid id PK
+        uuid member_id FK
+        string token_hash UK
+        string sent_to
+        datetime expires_at
+        datetime used_at
         datetime created_at
     }
 
@@ -1168,78 +1303,226 @@ roles, and the audit-log foundation every later branch builds on.</p>
         jsonb after_state
         datetime created_at
     }</code></pre>
-<p><strong>Five entities, two deliberate design choices worth highlighting:</strong></p>
+<p><strong>Eight entities, and the deliberate design choices worth highlighting:</strong></p>
 <ul>
 <li><strong><code>MEMBER_ROLES</code> is a junction table</strong>, not a single <code>role_id</code> column on
   <code>MEMBERS</code> — because role assignment is many-to-many (a Chairman can
   also be a contributing Member). A single foreign key can only ever
   point at one role; the junction table is what lets a member hold
   several roles at once.</li>
-<li><strong>Minors are <code>MEMBERS</code> rows too</strong>, not a separate table — <code>is_minor</code>
-  is a flag, with <code>phone_number</code>/<code>email</code>/<code>hashed_password</code> left <code>NULL</code>.
-  This keeps every other relationship that points at a member (future
-  Pledge, Payment, Attendance tables) working unchanged for minors,
-  with no parallel structures needed.</li>
+<li><strong>Minors are <code>MEMBERS</code> rows too</strong>, not a separate table. They are
+  distinguished by a stored <code>date_of_birth</code>, with <code>hashed_password</code> left
+  <code>NULL</code>. This keeps every other relationship that points at a member
+  (future Pledge, Payment, Attendance tables) working unchanged for
+  minors, with no parallel structures needed.</li>
+<li><strong>There is no <code>is_minor</code> column.</strong> Whether someone is a minor is
+  computed from <code>date_of_birth</code> and their family's <code>age_of_majority</code>. A
+  stored flag would go stale on the child's birthday.</li>
+<li><strong><code>date_of_birth</code> exists only while it is needed.</strong> Adults never
+  provide one, and a minor's is deleted when they activate their account.</li>
+<li><strong><code>hashed_password</code> is nullable</strong>, where <code>NULL</code> means "not activated
+  yet". The database rule is: if a member has a password, they must
+  have a phone number or an email.</li>
+<li><strong><code>HOUSEHOLDS.parent_household_id</code> points back at the same table.</strong>
+  A new household records the one it branched from, so the family tree
+  is just a column, with no extra table.</li>
+<li><strong>Tokens and codes are stored as hashes.</strong> A leaked database can't be
+  used to activate accounts or register families.</li>
+<li><strong><code>MEMBERS.household_id</code> is required.</strong> Everyone belongs to exactly one
+  household, so nobody is left floating.</li>
 </ul>
 <h2 id="how-it-was-built-layered-bottom-to-top">How it was built — layered, bottom to top</h2>
 <pre class="mermaid"><code>flowchart TD
-    A["models/ — SQLAlchemy ORM&lt;br/&gt;5 tables, constraints, relationships"] --&gt; B["Alembic migration&lt;br/&gt;generated &amp; applied to Postgres"]
-    B --&gt; C["core/ — security, exceptions, permissions&lt;br/&gt;password hashing · JWT · RBAC"]
-    C --&gt; D["services/ — business logic&lt;br/&gt;audit_service · auth_service"]
+    A["models/ — SQLAlchemy ORM&lt;br/&gt;8 tables, constraints, relationships"] --&gt; B["Alembic migration&lt;br/&gt;generated &amp; applied to Postgres"]
+    B --&gt; C["core/ — security, exceptions, permissions&lt;br/&gt;password hashing · tokens · JWT · RBAC"]
+    C --&gt; D["services/ — business logic&lt;br/&gt;audit · registration · auth · member · household"]
     D --&gt; E["schemas/ — Pydantic validation&lt;br/&gt;request/response contracts"]
-    E --&gt; F["routers/ — HTTP endpoints&lt;br/&gt;/auth/onboard · /auth/login · /auth/change-password"]</code></pre>
+    E --&gt; F["routers/ — HTTP endpoints&lt;br/&gt;/auth/register-family · /auth/activate · /auth/login&lt;br/&gt;/auth/change-password · /members · /households"]
+    D --&gt; G["scripts/ — daily coming-of-age job&lt;br/&gt;reuses the same services, no web request"]</code></pre>
 <p>Each layer only depends on the one below it — <code>routers</code> knows about
 <code>schemas</code> and <code>services</code>, but <code>services</code> never imports FastAPI at all.
-That separation is what lets the same <code>auth_service.onboard_member()</code>
-function be called from a web request today, and from a CLI script or
-background job later, with zero changes.</p>
-<h2 id="the-onboarding-login-forced-change-flow">The onboarding → login → forced change flow</h2>
+That separation is what lets the same <code>member_service.onboard_member()</code>
+function be called from a web request today, and from the daily job or
+a CLI script, with zero changes.</p>
+<h2 id="the-registration-flow">The registration flow</h2>
+<pre class="mermaid"><code>flowchart TD
+    A["Chairman opens the register page"] --&gt; B["Enters code, family name, age limit, own details and password"]
+    B --&gt; C{"Code valid, unused and unexpired?"}
+    C -- No --&gt; X["Rejected with a generic error"]
+    C -- Yes --&gt; D["Start one transaction"]
+    D --&gt; E["Create the family"]
+    E --&gt; F["Create the first household"]
+    F --&gt; G["Create the Chairman as an adult member"]
+    G --&gt; H["Assign chairman and member roles"]
+    H --&gt; I["Make the Chairman head of the household"]
+    I --&gt; J["Mark the code used and write audit entries"]
+    J --&gt; K["Commit and return a login token"]</code></pre>
+<h2 id="the-onboarding-activation-flow">The onboarding → activation flow</h2>
 <pre class="mermaid"><code>sequenceDiagram
     participant C as Chairman
     participant R as Router
-    participant S as auth_service
+    participant S as member_service
     participant DB as Postgres
+    participant N as SMS / email stub
+    participant M as New member
 
-    C-&gt;&gt;R: POST /auth/onboard
+    C-&gt;&gt;R: POST /members (name, contact, household)
     R-&gt;&gt;S: onboard_member()
-    S-&gt;&gt;S: generate temp password, hash it
-    S-&gt;&gt;DB: INSERT member (must_change_password=true)
-    S--&gt;&gt;C: temp password "sent" via SMS stub
+    S-&gt;&gt;S: check role and family scope
+    S-&gt;&gt;DB: INSERT member (no password)
+    S-&gt;&gt;DB: INSERT activation token (hash only)
+    S-&gt;&gt;DB: INSERT audit entry
+    S-&gt;&gt;N: send invite link with token
+    N--&gt;&gt;M: invite link
 
-    Note over C: Member logs in with temp password
+    Note over M: Opening the page uses nothing up
 
-    C-&gt;&gt;R: POST /auth/login
-    R-&gt;&gt;S: authenticate()
-    S-&gt;&gt;DB: verify is_active, password hash, expiry
-    S--&gt;&gt;C: access token (must_change_password=true)
+    M-&gt;&gt;R: POST /auth/activate (token, new password)
+    R-&gt;&gt;S: activate_member()
+    S-&gt;&gt;DB: verify token is valid, unused, unexpired
+    S-&gt;&gt;DB: SET hashed_password, mark token used
+    S-&gt;&gt;DB: INSERT audit entry
+    S--&gt;&gt;M: login token returned
 
-    Note over C: Restricted to change-password only
-
-    C-&gt;&gt;R: POST /auth/change-password
-    R-&gt;&gt;S: change_password()
-    S-&gt;&gt;DB: UPDATE hashed_password, clear flags
-    S--&gt;&gt;C: success — must log in again</code></pre>
+    Note over M: Already logged in, no second login needed</code></pre>
+<h2 id="households-and-branches">Households and branches</h2>
+<p>Households are managed only by the Chairman and Secretary. A minor joins their guardian's household, and an adult child stays in their parents' household until they create their own.</p>
+<pre class="mermaid"><code>flowchart TD
+    F["The family"]
+    F --&gt; H1["Household 1: parents"]
+    H1 --&gt; H2["Household 2: eldest son and wife"]
+    H1 --&gt; H3["Household 3: second son and wife"]
+    H2 --&gt; H4["Household 4: grandson and wife"]</code></pre>
+<p>When a son marries:</p>
+<pre class="mermaid"><code>flowchart TD
+    A["Chairman or Secretary creates a new household"] --&gt; B["Sets its parent to the son's current household"]
+    B --&gt; C["Moves the son into it"]
+    C --&gt; D["Onboards the wife as a new adult member in that household"]
+    D --&gt; E["Sets the son as household head"]
+    E --&gt; F["Each change is written to the audit log"]</code></pre>
+<p>Rules enforced by the service layer:</p>
+<ul>
+<li>A household head must be an adult member of that household.</li>
+<li>If the head moves or is deactivated, a new head must be chosen.</li>
+<li>A household cannot be its own parent.</li>
+<li>Contributions belong to members, so past payments and pledges stay on a member's record when they move.</li>
+<li>One person belongs to one family. A spouse already registered in another family must leave it before being onboarded here.</li>
+</ul>
+<h2 id="minors-and-coming-of-age">Minors and coming of age</h2>
+<pre class="mermaid"><code>flowchart TD
+    A["Daily job runs"] --&gt; B["Find members with a date of birth who have reached their family's age limit and have no password"]
+    B --&gt; C{"Invite contact recorded?"}
+    C -- Yes --&gt; D["Create activation token and send the link to that contact"]
+    C -- No --&gt; E["Notify Chairman and Secretary to add a contact and send the invite"]
+    D --&gt; F["Member opens link, adds own phone or email, sets a password"]
+    E --&gt; G["Chairman adds contact and sends the invite"]
+    G --&gt; F
+    F --&gt; H["Delete date of birth and invite contact"]
+    H --&gt; I["Member is now a full adult, logged in"]</code></pre>
+<ul>
+<li>Until the member activates, notifications keep going to their guardian.</li>
+<li>Raising a family's age limit keeps its minors as minors for longer. It never turns existing adults back into minors.</li>
+<li>A member who computes as a minor is refused at login, whatever their record says.</li>
+</ul>
+<h3 id="member-lifecycle">Member lifecycle</h3>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Active: registers the family as first Chairman
+    [*] --&gt; Minor: onboarded as a minor
+    [*] --&gt; PendingActivation: onboarded as an adult
+    Minor --&gt; PendingActivation: reaches the age limit and invite is sent
+    PendingActivation --&gt; Active: sets password from the link
+    Active --&gt; Deactivated: Chairman deactivates
+    Deactivated --&gt; Active: reactivated</code></pre>
+<h2 id="date-of-birth-privacy">Date of birth privacy</h2>
+<table>
+<thead>
+<tr>
+<th>Who</th>
+<th>Can see a date of birth?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The member themselves</td>
+<td>Yes, on their own profile</td>
+</tr>
+<tr>
+<td>Chairman or Secretary</td>
+<td>Only through a lookup that requires a reason</td>
+</tr>
+<tr>
+<td>Everyone else</td>
+<td>Never. Lists show only "adult" or "minor"</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Each lookup writes an audit entry recording who looked, at whom, and why. The date itself is not copied into the log.</li>
+<li>A date of birth never appears in audit <code>before_state</code> or <code>after_state</code>.</li>
+<li>It cannot be in the future.</li>
+<li>It is left out of every response schema except the member's own profile.</li>
+</ul>
+<h2 id="how-every-request-is-checked">How every request is checked</h2>
+<pre class="mermaid"><code>flowchart TD
+    A["Request with bearer token"] --&gt; B{"Token valid and unexpired?"}
+    B -- No --&gt; X1["401 Unauthorized"]
+    B -- Yes --&gt; C{"Member exists?"}
+    C -- No --&gt; X1
+    C -- Yes --&gt; D{"Member is active?"}
+    D -- No --&gt; X2["403 Deactivated"]
+    D -- Yes --&gt; E{"Route needs a role?"}
+    E -- No --&gt; OK["Run the route"]
+    E -- Yes --&gt; F{"Holds at least one required role?"}
+    F -- No --&gt; X3["403 Forbidden"]
+    F -- Yes --&gt; OK</code></pre>
+<p>Every query after that is filtered by the current member's <code>family_id</code>, and every write is saved in the same transaction as its audit entry.</p>
 <h2 id="security-measures-built-into-this-feature">Security measures built into this feature</h2>
 <ul>
-<li><strong>Passwords are hashed with bcrypt</strong>, never stored in plain text — not
-  even the temporary one.</li>
+<li><strong>Passwords are hashed with bcrypt</strong>, never stored in plain text.</li>
+<li><strong>Registration codes and activation tokens are stored hashed</strong>, are
+  single-use, and expire, so a leaked row or a stolen link is of little use.</li>
+<li><strong>The activation token travels in the URL fragment</strong>, which browsers
+  don't send to servers or in referrer headers, so it stays out of logs.</li>
+<li><strong>Opening an invite link consumes nothing.</strong> Only submitting the new
+  password does, so link scanners can't burn a member's invite.</li>
 <li><strong>JWT-based sessions</strong>, signed with a secret key kept out of version
   control (<code>.env</code>, gitignored).</li>
 <li><strong><code>is_active</code> is checked in exactly one place</strong> — the point a token
   resolves back to a member — so a deactivated member is blocked from
-  <em>everything</em> the instant Chairman flips the switch.</li>
+  <em>everything</em> the instant the Chairman flips the switch.</li>
 <li><strong>Role-based access control evaluates the union of a member's roles</strong>,
   not a single assumed role, since one person can hold several.</li>
+<li><strong>Login errors are generic</strong>, so they never reveal whether the
+  identifier or the password was the wrong part.</li>
+<li><strong>Every query is scoped by <code>family_id</code></strong>, so families are isolated
+  from one another.</li>
 <li><strong>Database-level <code>CHECK</code> constraints back up application-level
-  validation</strong> — e.g. an adult member must have a phone or email,
-  enforced by Postgres itself, not just trusted to the API layer.</li>
-<li><strong>Every onboarding, login, and password change writes an immutable
-  audit log entry</strong> — actor, action, before/after state, timestamp.</li>
+  validation</strong> — e.g. a member with a password must have a phone or
+  email, enforced by Postgres itself, not just trusted to the API layer.</li>
+<li><strong>Date of birth is private</strong>, audited on every lookup, and deleted
+  once a member is an adult.</li>
+<li><strong>Every registration, onboarding, activation, login, household change
+  and date-of-birth lookup writes an immutable audit log entry</strong>: actor,
+  action, before/after state, timestamp. The allowed actions are
+  <code>family.registered</code>, <code>member.onboarded</code>, <code>member.invite_sent</code>,
+  <code>member.activated</code>, <code>member.login</code>, <code>member.password_changed</code>,
+  <code>member.dob_viewed</code>, <code>member.household_changed</code>, <code>member.deactivated</code>
+  and <code>household.created</code>.</li>
 </ul>
 <h2 id="whats-deliberately-deferred">What's deliberately deferred</h2>
 <ul>
-<li>Real SMS delivery — <code>send_sms()</code> is a stub that logs to console;
-  swapping in a gateway later requires no change to the code.</li>
+<li>Real SMS and email delivery — <code>send_sms()</code> is a stub that logs to
+  console; swapping in a gateway later requires no change to the code.</li>
+<li>Token revocation and logout (a <code>jti</code> blacklist in Redis) and refresh
+  tokens.</li>
+<li>Forgot-password, which can reuse the activation token mechanism.</li>
+<li>Rate limiting on login and activation.</li>
+<li>Phone or email verification, to replace registration codes when
+  registration opens to the public.</li>
+<li>Bulk onboarding.</li>
+<li>A handover action to pass the Chairman role on.</li>
+<li>A "member leaves the family" action (deactivate, never delete).</li>
+<li>Friendly messages for database integrity errors.</li>
 </ul>
 
 
