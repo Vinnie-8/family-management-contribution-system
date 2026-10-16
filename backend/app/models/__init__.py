@@ -26,3 +26,5 @@ from app.models.minutes_record import MinutesRecord
 from app.models.handover_record import HandoverRecord           
 from app.models.notification import Notification               
 from app.models.document import Document   
+from app.models.activation_token import ActivationToken
+from app.models.registration_code import RegistrationCode

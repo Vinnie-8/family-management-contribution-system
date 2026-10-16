@@ -6,25 +6,28 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+import app.models  # noqa: F401  (loads every model so SQLAlchemy relationships always resolve)
 from app.config import settings
 from app.core.exceptions import (
+    BusinessRuleError,
+    ContactRequiredError,
     DomainError,
     DuplicateMemberError,
     InactiveMemberError,
+    InvalidActivationTokenError,
     InvalidCredentialsError,
-    MustChangePasswordError,
+    InvalidRegistrationCodeError,
+    NotFoundError,
     PermissionDeniedError,
-    TempPasswordExpiredError,
 )
 from app.routers import auth  # adjust to your actual router modules
 
 app = FastAPI(title="Family Members API", version="1.0.0")
 
 # --- Middleware -------------------------------------------------------------
-# Needed only if a browser frontend on a different origin calls this API.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins,  # e.g. ["http://localhost:3000"]
+    allow_origins=settings.cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -48,20 +51,29 @@ app.add_exception_handler(
 )
 app.add_exception_handler(InactiveMemberError, _handler(403, "Account is deactivated"))
 app.add_exception_handler(
-    TempPasswordExpiredError,
-    _handler(401, "Temporary password has expired. Please request a new one."),
-)
-app.add_exception_handler(
     PermissionDeniedError,
     _handler(403, "You do not have permission to perform this action"),
 )
 app.add_exception_handler(
-    DuplicateMemberError,
-    _handler(409, "A member with this phone or email already exists"),
+    InvalidActivationTokenError,
+    _handler(400, "This link is invalid or has expired"),
 )
 app.add_exception_handler(
-    MustChangePasswordError,
-    _handler(403, "Password change required before continuing"),
+    InvalidRegistrationCodeError,
+    _handler(400, "This registration code is invalid or has expired"),
+)
+app.add_exception_handler(
+    ContactRequiredError,
+    _handler(400, "A phone number or email is required"),
+)
+app.add_exception_handler(NotFoundError, _handler(404, "Not found"))
+app.add_exception_handler(
+    DuplicateMemberError,
+    _handler(409, "A member with this phone, email or ID number already exists"),
+)
+app.add_exception_handler(
+    BusinessRuleError,
+    _handler(422, "Request breaks a family rule"),
 )
 # Fallback for any other DomainError subclass you add later
 app.add_exception_handler(DomainError, _handler(400, "Request could not be processed"))
@@ -69,6 +81,7 @@ app.add_exception_handler(DomainError, _handler(400, "Request could not be proce
 
 # --- Routers ---------------------------------------------------------------
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
+
 
 # --- Health check (public, no auth) -------------------------------------------
 @app.get("/health", tags=["system"])

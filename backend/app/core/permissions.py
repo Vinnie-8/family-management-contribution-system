@@ -1,6 +1,11 @@
 """
 Authentication/authorization dependencies for FastAPI routes.
+
+get_current_member is the single place a token resolves to a member, and the
+only place is_active is checked. Everything else builds on it.
 """
+import uuid
+
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
@@ -14,57 +19,50 @@ from app.models.role import Role
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 
+def _unauthorized(detail: str) -> HTTPException:
+    return HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail=detail,
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
+
 def get_current_member(
     token: str = Depends(oauth2_scheme),
     db: Session = Depends(get_db),
 ) -> Member:
     member_id = decode_access_token(token)
     if member_id is None:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid or expired token",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
+        raise _unauthorized("Invalid or expired token")
+    try:
+        member_uuid = uuid.UUID(member_id)
+    except ValueError:
+        raise _unauthorized("Invalid or expired token")
 
-    member = db.query(Member).filter(Member.id == member_id).first()
+    member = db.get(Member, member_uuid)
     if member is None:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Member no longer exists",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
+        raise _unauthorized("Member no longer exists")
 
-    # The universal gate
+    # The universal gate: the only is_active check in the codebase.
     if not member.is_active:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Account is deactivated")
+
+    # A member who computes as a minor never has a valid session.
+    if member.is_minor:
+        raise _unauthorized("Invalid or expired token")
 
     return member
 
 
-def require_full_access(current_member: Member = Depends(get_current_member)) -> Member:
-    """
-    Blocks everything except the change-password endpoint until a member
-    has replaced their temporary password (FR1.4). Apply this (instead of
-    get_current_member directly) to every route EXCEPT /auth/change-password.
-    """
-    if current_member.must_change_password:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Password change required before continuing",
-        )
-    return current_member
-
-
 def require_role(*role_names: str):
-    """
-    Dependency factory: require_role("chairman", "secretary") allows either.
-    """
+    """require_role("chairman", "secretary") passes if the member holds at
+    least one of them (union of roles)."""
     allowed = {r.lower() for r in role_names}
     if not allowed:
         raise ValueError("require_role needs at least one role name")
 
     def dependency(
-        current_member: Member = Depends(require_full_access),
+        current_member: Member = Depends(get_current_member),
         db: Session = Depends(get_db),
     ) -> Member:
         member_role_names = {

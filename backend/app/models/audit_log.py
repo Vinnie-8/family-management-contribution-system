@@ -17,11 +17,20 @@ AUDIT_ACTIONS = (
     "delete",
     "deactivate_member",
     "reset_password",
+    # feature/auth redesign
+    "register_family",
+    "send_invite",
+    "activate_member",
+    "login",
+    "change_password",
+    "view_date_of_birth",
+    "change_household",
 )
 ENTITY_TYPES = (
     "member",
     "household",
     "contribution_rule",
+    "family",
 )
 
 
@@ -52,7 +61,7 @@ class AuditLog(Base):
     # entity_type, and audit rows must survive deletion of the entity.
     entity_id = Column(UUID(as_uuid=True), nullable=True)
 
-    # Snapshots. Never include secrets such as hashed_password.
+    # Snapshots. Never include secrets such as hashed_password or date_of_birth.
     before_state = Column(JSONB, nullable=True)
     after_state = Column(JSONB, nullable=True)
 

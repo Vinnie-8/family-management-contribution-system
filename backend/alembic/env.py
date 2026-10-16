@@ -1,5 +1,6 @@
 from logging.config import fileConfig
 from app.config import settings
+from app import models
 
 
 from sqlalchemy import engine_from_config
@@ -9,7 +10,6 @@ from alembic import context
 import os
 from dotenv import load_dotenv
 from app.database import Base
-from app import models
 import os
 import sys
 

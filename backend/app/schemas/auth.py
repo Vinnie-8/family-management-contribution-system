@@ -1,113 +1,123 @@
 """
 Request/response schemas for feature/auth.
+Member onboarding schemas live with feature/members.
 """
-import re
-import uuid
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import BaseModel, EmailStr, Field, field_validator, model_validator
+from pydantic import (
+    AfterValidator,
+    BaseModel,
+    ConfigDict,
+    EmailStr,
+    Field,
+    field_validator,
+    model_validator,
+)
 
-_KE_PHONE = re.compile(r"^(?:\+?254|0)([17]\d{8})$")
+from app.core.normalizers import normalize_email, normalize_phone
+
+_BCRYPT_MAX_BYTES = 72
 
 
-# --- Onboarding (FR1.1-1.3) ---
+def _empty_to_none(v):
+    """Trim whitespace and treat empty strings as 'not provided'."""
+    if isinstance(v, str):
+        v = v.strip()
+        return v or None
+    return v
 
-class MemberOnboardRequest(BaseModel):
-    name: str = Field(min_length=1, max_length=100)
-    is_minor: bool = False
+
+def _check_password_bytes(v: str) -> str:
+    # bcrypt reads 72 BYTES, and one accented or non-Latin character can be several.
+    if len(v.encode("utf-8")) > _BCRYPT_MAX_BYTES:
+        raise ValueError("Password is too long (72 bytes at most)")
+    return v
+
+
+NewPassword = Annotated[str, Field(min_length=8), AfterValidator(_check_password_bytes)]
+
+
+class _ContactFields(BaseModel):
+    """Optional phone and email, cleaned the same way everywhere."""
+    model_config = ConfigDict(str_strip_whitespace=True)
+
     phone_number: Optional[str] = None
     email: Optional[EmailStr] = None
-    id_number: Optional[str] = Field(default=None, pattern=r"^\d{8}$")
-    category: Optional[str] = Field(default=None, max_length=50)
-    household_id: Optional[uuid.UUID] = None 
 
-    @field_validator(
-        "name", "phone_number", "email", "id_number", "category", "household_id",
-        mode="before",
-    )
+    @field_validator("phone_number", "email", mode="before")
     @classmethod
     def blank_to_none(cls, v):
-        """Trim whitespace and treat empty strings as 'not provided'."""
-        if isinstance(v, str):
-            v = v.strip()
-            return v or None
-        return v
+        return _empty_to_none(v)
 
     @field_validator("phone_number")
     @classmethod
-    def normalize_phone(cls, v):
-        """Accept 07XX.., 01XX.., 2547XX.. or +2547XX.. and store as +254XXXXXXXXX."""
+    def phone_format(cls, v):
         if v is None:
             return v
-        cleaned = re.sub(r"[\s\-()]", "", v)
-        match = _KE_PHONE.match(cleaned)
-        if not match:
-            raise ValueError(
-                "Phone number must be a valid Kenyan number, e.g. 0712345678 or +254712345678"
-            )
-        return f"+254{match.group(1)}"
+        normalized = normalize_phone(v)
+        if normalized is None:
+            raise ValueError("Phone number must be a valid Kenyan number, e.g. 0712345678 or +254712345678")
+        return normalized
 
     @field_validator("email")
     @classmethod
-    def normalize_email(cls, v):
-        """Lowercase so Mary@x.com and mary@x.com can't both pass the unique check."""
+    def email_format(cls, v):
         if v is None:
             return v
-        v = v.lower()
+        v = normalize_email(v)
         if len(v) > 50:
             raise ValueError("Email must be 50 characters or fewer")
         return v
 
-    @model_validator(mode="after")
-    def adult_needs_contact_info(self):
-        """
-        FR1.3 requires the system to deliver a temp password via send_sms()
-        immediately on creation. An adult member with neither phone nor
-        email has nowhere for that credential to go, so this blocks the
-        request before it ever reaches auth_service.onboard_member().
 
-        Minors are exempt: per FR1.7, phone/email are intentionally left
-        null for them; they never receive login credentials at all.
-        """
-        if not self.is_minor and not self.phone_number and not self.email:
-            raise ValueError(
-                "An adult member needs at least a phone or an email, "
-                "otherwise there's no way to deliver their login credentials."
-            )
+# --- Register a family (Chairman) ---
+
+class RegisterFamilyRequest(_ContactFields):
+    registration_code: str = Field(min_length=1, max_length=50)
+    family_name: str = Field(min_length=1, max_length=100)
+    # Each family chooses its own minor age limit; 18 unless they say otherwise.
+    age_of_majority: int = Field(default=18, ge=1, le=30)
+    name: str = Field(min_length=1, max_length=100)
+    id_number: Optional[str] = Field(default=None, pattern=r"^\d{8}$")
+    password: NewPassword
+
+    @field_validator("id_number", mode="before")
+    @classmethod
+    def id_blank_to_none(cls, v):
+        return _empty_to_none(v)
+
+    @model_validator(mode="after")
+    def needs_contact(self):
+        # A member with a password must have a phone or email (database rule).
+        if not self.phone_number and not self.email:
+            raise ValueError("A phone number or an email is required")
         return self
 
 
-class MemberOnboardResponse(BaseModel):
-    id: str
-    name: str
-    is_minor: bool
-    phone_number: Optional[str] = None
-    email: Optional[str] = None
-    temp_password_sent: bool
-    # Deliberately no password field: never echo credential material back,
-    # even the temporary one.
+# --- Activate (first password, from the invite link) ---
+
+class ActivateRequest(_ContactFields):
+    token: str = Field(min_length=1)
+    new_password: NewPassword
+    # Only needed by a minor who has just come of age and has no contact of their own yet.
 
 
-# --- Login (FR1.4-1.5) ---
+# --- Login ---
 # The router uses OAuth2PasswordRequestForm for the request, so there is
-# no LoginRequest schema any more. Only the response is defined here.
+# no LoginRequest schema. Only the response is defined here.
 
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
-    # Lets the client route straight to the change-password screen
-    # without decoding the JWT.
-    must_change_password: bool
     member_id: str
     name: str
 
 
-# --- Change password (FR1.4) ---
+# --- Change password ---
 
 class ChangePasswordRequest(BaseModel):
     current_password: str
-    # max_length=72 because bcrypt ignores everything past 72 bytes
-    new_password: str = Field(min_length=8, max_length=72)
+    new_password: NewPassword
 
     @model_validator(mode="after")
     def must_differ(self):
@@ -117,4 +127,4 @@ class ChangePasswordRequest(BaseModel):
 
 
 class ChangePasswordResponse(BaseModel):
-    detail: str = "Password changed successfully. Please log in again."
+    detail: str = "Password changed successfully."

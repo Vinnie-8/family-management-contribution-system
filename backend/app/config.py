@@ -11,14 +11,14 @@ class Settings(BaseSettings):
     
     redis_url: str = "redis://localhost:6379/0"
     cors_origins: List[str] = ["http://localhost:3000"]
+    frontend_url: str = "http://localhost:3000"
     
     
     jwt_secret_key : str
     jwt_algorithm :str = "HS256"
     access_token_expire_minutes:int
     refresh_token_expire_days : int
-    temp_password_expire_hours : int
-    temp_password_length : int
+    activation_token_expire_hours : int
     environment: str = "development"
     
     @property

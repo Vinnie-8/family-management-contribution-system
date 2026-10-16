@@ -1,8 +1,6 @@
 """
-Domain exceptions — raised by services, translated to HTTP responses in
-main.py's exception handlers. Keeping services free of `HTTPException`
-means the same service functions could be reused outside a web request
-(a CLI script, a background job) without dragging FastAPI along.
+Domain exceptions: raised by services, translated to HTTP responses in
+main.py's exception handlers. Services never import HTTPException.
 """
 
 
@@ -11,27 +9,38 @@ class DomainError(Exception):
 
 
 class InvalidCredentialsError(DomainError):
-    """Wrong phone/email or password. Deliberately generic (see auth_service) —
-    never reveals whether the identifier or the password was the wrong part."""
+    """Wrong identifier or password. Deliberately generic."""
 
 
 class InactiveMemberError(DomainError):
-    """Member exists but is_active=False (FR1.6 universal gate)."""
+    """Member exists but is_active=False."""
 
 
-class TempPasswordExpiredError(DomainError):
-    """FR1.5 — temp password's expiry has passed; must request a new one."""
+class InvalidActivationTokenError(DomainError):
+    """Activation link is unknown, used, expired, or its member can't activate.
+    One message for all cases, so nothing leaks."""
 
 
-class MustChangePasswordError(DomainError):
-    """FR1.4 — login succeeded but member must change password before anything else.
-    Not really an 'error' in the failure sense — it's a signal the router uses to
-    return a restricted token/response rather than a full session."""
+class InvalidRegistrationCodeError(DomainError):
+    """Registration code is unknown, used, or expired. Generic on purpose."""
+
+
+class ContactRequiredError(DomainError):
+    """A phone number or email is needed to finish activation."""
 
 
 class PermissionDeniedError(DomainError):
-    """Member is authenticated but lacks the required role for this action."""
+    """Authenticated but lacks the required role for this action."""
 
 
 class DuplicateMemberError(DomainError):
-    """Onboarding conflict — duplicate phone/email within the same family (FR1.2)."""
+    """Phone, email or ID number is already registered (unique across the platform)."""
+
+
+class NotFoundError(DomainError):
+    """A household or member doesn't exist in the caller's family."""
+
+
+class BusinessRuleError(DomainError):
+    """A family rule was broken (for example, a household head must be an adult
+    member of that household, or a minor needs a date of birth)."""

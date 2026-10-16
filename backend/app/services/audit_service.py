@@ -1,16 +1,12 @@
-"""
-audit_service — the single place every other service writes to AuditLog
-(FR14.1). No service should ever construct an AuditLog(...) row directly;
-calling log_action() here keeps the shape consistent across all 13
-feature branches, and gives us one place to extend later (e.g. adding
-request-IP capture) without touching every caller.
-"""
 import uuid
 from typing import Optional
 
 from sqlalchemy.orm import Session
 
-from app.models.audit_log import AuditLog
+from app.models.audit_log import AUDIT_ACTIONS, ENTITY_TYPES, AuditLog
+
+# Audit snapshots must never hold credentials or a date of birth.
+_FORBIDDEN_KEYS = {"hashed_password", "date_of_birth", "password", "token"}
 
 
 def log_action(
@@ -24,22 +20,16 @@ def log_action(
     before_state: Optional[dict] = None,
     after_state: Optional[dict] = None,
 ) -> AuditLog:
-    """
-    Writes one immutable audit entry. Does NOT commit — the caller's
-    request is still inside get_db()'s single transaction, so this entry
-    commits together with whatever else the request did (e.g. the Member
-    row being created), per the "one transaction" discipline in
-    Security & Privacy.
+    """Writes one audit entry. Does NOT commit: it saves with the caller's
+    transaction. Flush new entities first so entity_id is not None."""
+    if action not in AUDIT_ACTIONS:
+        raise ValueError(f"Unknown audit action: {action!r}")
+    if entity_type not in ENTITY_TYPES:
+        raise ValueError(f"Unknown audit entity type: {entity_type!r}")
+    for state in (before_state, after_state):
+        if state and _FORBIDDEN_KEYS & state.keys():
+            raise ValueError("Audit state must not contain secrets or date of birth")
 
-    actor_member_id is optional: some actions are system-initiated
-    (e.g. a campaign auto-closing at end_date) rather than performed by
-    a logged-in member.
-
-    Keyword-only arguments (the `*`) are deliberate — with 7 parameters,
-    positional calls would be too easy to get wrong (swap entity_id and
-    actor_member_id, both UUIDs, and nothing would catch it at the type
-    level). Forcing keywords makes every call self-documenting.
-    """
     entry = AuditLog(
         family_id=family_id,
         actor_member_id=actor_member_id,
@@ -51,4 +41,3 @@ def log_action(
     )
     db.add(entry)
     return entry
-    
