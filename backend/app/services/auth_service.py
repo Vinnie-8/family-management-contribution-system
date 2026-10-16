@@ -45,7 +45,7 @@ def send_sms(destination: str, message: str) -> None:
     print(f"[SMS stub] to {destination}: {message}")
 
 
-def _assert_not_registered(
+def assert_not_registered(
     db: Session, phone_number: Optional[str], email: Optional[str], id_number: Optional[str]
 ) -> None:
     """Friendly duplicate errors. The unique columns remain the real guard."""
@@ -85,7 +85,7 @@ def register_family(
     if code is None or code.used_at is not None or code.expires_at <= now:
         raise InvalidRegistrationCodeError("Invalid or expired registration code")
 
-    _assert_not_registered(db, phone_number, email, id_number)
+    assert_not_registered(db, phone_number, email, id_number)
 
     roles = db.query(Role).filter(Role.name.in_(("chairman", "member"))).all()
     if len(roles) != 2:

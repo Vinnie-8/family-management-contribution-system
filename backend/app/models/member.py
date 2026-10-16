@@ -1,5 +1,4 @@
 import uuid
-from datetime import date
 
 from sqlalchemy import Column, ForeignKey, String, Boolean, CheckConstraint, DateTime, Date
 from sqlalchemy.orm import relationship
@@ -7,6 +6,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 
 from app.database import Base
+from app.core.age import age_in_years
 
 
 class Member(Base):
@@ -55,14 +55,11 @@ class Member(Base):
 
     family = relationship("Family", back_populates="members")
     member_roles = relationship("MemberRole", back_populates="member", foreign_keys="[MemberRole.member_id]")
-
+    
+    
     @property
     def is_minor(self) -> bool:
-        """Computed, never stored. Adults have no date_of_birth, so they are never minors."""
-        if self.date_of_birth is None:
-            return False
-        today = date.today()
-        age = today.year - self.date_of_birth.year - (
-            (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day)
-        )
-        return age < self.family.age_of_majority
+       """Computed, never stored. Adults have no date_of_birth, so they are never minors."""
+       if self.date_of_birth is None:
+           return False
+       return age_in_years(self.date_of_birth) < self.family.age_of_majority
