@@ -17,6 +17,7 @@ nav:
       - Normal Forms Case Study: Database_design_and_normalization/normal_forms.md
   - BACKEND_ERD_Diagram :
       - Authentication ERD : Project_ERD_Diagram/feature_auth_erd.md
+      - Members ERD : Project_ERD_Diagram/feature_members_erd.md
 
       
 
