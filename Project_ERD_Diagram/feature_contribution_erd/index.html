@@ -1,0 +1,2530 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://Vinnie-8.github.io/family-management-contribution-system/Project_ERD_Diagram/feature_contribution_erd/">
+      
+      
+        <link rel="prev" href="../feature_members_erd/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Contribution ERD - Family-Management-Contribution-System-Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#feature-contributions-payments-fines-expenses-and-reporting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Family-Management-Contribution-System-Documentation" class="md-header__button md-logo" aria-label="Family-Management-Contribution-System-Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Family-Management-Contribution-System-Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contribution ERD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user_research/" class="md-tabs__link">
+          
+  
+  
+  User Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Authentication_Authorization_study/auth_casestudy/" class="md-tabs__link">
+          
+  
+  
+  Authentication & Authorization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../fastapi_auth_casestudy/fastapi_authentication/" class="md-tabs__link">
+          
+  
+  
+  FastAPI_Authentication
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Database_design_and_normalization/db_design_normalization/" class="md-tabs__link">
+          
+  
+  
+  Database_Design_Normalization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../feature_auth_erd/" class="md-tabs__link">
+          
+  
+  
+  BACKEND_ERD_Diagram
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Family-Management-Contribution-System-Documentation" class="md-nav__button md-logo" aria-label="Family-Management-Contribution-System-Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Family-Management-Contribution-System-Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_research/summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_research/feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feedback
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication & Authorization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Authentication & Authorization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Authentication_Authorization_study/auth_casestudy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Study
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastAPI_Authentication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FastAPI_Authentication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fastapi_auth_casestudy/fastapi_authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Study
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database_Design_Normalization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Database_Design_Normalization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database_design_and_normalization/db_design_normalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Study
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database_design_and_normalization/normal_forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Normal Forms Case Study
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BACKEND_ERD_Diagram
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BACKEND_ERD_Diagram
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feature_auth_erd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication ERD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feature_members_erd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Members ERD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution ERD
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution ERD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-design-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Design rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-entity-relationship-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Entity relationship diagram
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Entity relationship diagram">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-planning-years-campaigns-rules-and-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Planning: years, campaigns, rules and events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-money-in-pledges-payments-fines-and-the-welfare-fund" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Money in: pledges, payments, fines and the welfare fund
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-money-out-expenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Money out: expenses
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-changes-to-the-existing-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Changes to the existing models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-campaigns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Campaigns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Campaigns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-opening-a-fixed-campaign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Opening a fixed campaign
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-pledge-based-and-emergency-campaigns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Pledge-based and emergency campaigns
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pledges-and-installments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Pledges and installments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-payments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Payments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Payments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-who-records-who-confirms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Who records, who confirms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-payment-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Payment lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-what-happens-when-a-payment-becomes-confirmed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 What happens when a payment becomes confirmed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-fines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Fines
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-standing-fund-welfare-fund" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Standing fund (welfare fund)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-events-event-funding-and-expenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Events, event funding and expenses
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Events, event funding and expenses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-linking-campaigns-to-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Linking campaigns to events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-expenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Expenses
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-financial-years" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Financial years
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-roles-and-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Roles and permissions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Endpoints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#part-1-financial-years-campaigns-rules-assessed-pledges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: financial years, campaigns, rules, assessed pledges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-2-pledges-and-payments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: pledges and payments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-3-fines-and-the-standing-fund" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: fines and the standing fund
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-4-events-and-expenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: events and expenses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-5-reports-and-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: reports and jobs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-audit-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Audit trail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-code-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Code layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-build-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Build order
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-assumptions-and-open-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Assumptions and open items
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="feature-contributions-payments-fines-expenses-and-reporting">Feature: Contributions, Payments, Fines, Expenses and Reporting</h1>
+<h2 id="1-overview">1. Overview</h2>
+<p>This is the core of the system: how a family raises money, how members pay, how money is spent, and how the year is reported.</p>
+<p><strong>What it delivers</strong></p>
+<ul>
+<li>Campaigns of four kinds: fixed, pledge-based, emergency, and the always-open welfare fund</li>
+<li>Automatic assessment of every eligible member when a fixed campaign opens</li>
+<li>Pledges with optional installments</li>
+<li>Payments by cash, bank transfer, M-Pesa and in kind, with duplicate protection</li>
+<li>Fines, collected through the same payment table</li>
+<li>Expenses with Chairman approval, tied to events or the welfare fund</li>
+<li>Financial years with opening and closing balances</li>
+<li>A rule that money records are voided, never edited or deleted</li>
+</ul>
+<p><strong>Three parts to the feature</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Tables</th>
+<th>Question it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Money in</td>
+<td>Campaign, ContributionRule, Pledge, PledgeInstallment, Fine, Payment</td>
+<td>Who owes, who paid, how much</td>
+</tr>
+<tr>
+<td>Money out</td>
+<td>Expense</td>
+<td>What was spent, on what, approved by whom</td>
+</tr>
+<tr>
+<td>What it is for</td>
+<td>Event, CampaignEvent</td>
+<td>Which occasion the money serves</td>
+</tr>
+<tr>
+<td>Containers</td>
+<td>StandingFund, FinancialYear</td>
+<td>The welfare pot and the reporting period</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-design-rules">2. Design rules</h2>
+<ol>
+<li><strong>Every money movement is a row, and rows are never edited or deleted.</strong> A mistake is voided with a reason, and the void is audited.</li>
+<li><strong>Balances come from the rows.</strong> Where a stored total exists (<code>Pledge.fulfilled_amount</code>, <code>Fine.fulfilled_amount</code>, <code>StandingFund.balance</code>), exactly one service function changes it, inside the same transaction, after locking the row (<code>with_for_update</code>). A reconcile script recomputes the totals from the payments and reports any difference.</li>
+<li><strong>Every row carries <code>family_id</code></strong>, and every query is scoped to the logged-in officer's family. Another family's record is reported as "not found".</li>
+<li><strong>Money is <code>Numeric(12,2)</code> in KES.</strong> Never floats. Every amount has a <code>CHECK (amount &gt; 0)</code>.</li>
+<li><strong>Contributions are per member.</strong> A payment counts for one member, and <code>paid_by</code> records who actually paid (for example a parent paying for a child).</li>
+<li><strong>Privacy.</strong> An ordinary member sees only their own pledges, payments and fines. Everyone sees family totals, never another member's individual record. Officers see all records in their family.</li>
+<li><strong>A closed period is closed.</strong> A closed campaign accepts no new pledges or payments. A closed financial year accepts no new records at all.</li>
+<li><strong>Statuses are plain strings validated at the schema layer</strong>, so a new status does not need a schema migration.</li>
+</ol>
+<hr />
+<h2 id="3-entity-relationship-diagram">3. Entity relationship diagram</h2>
+<p>The model is shown in three smaller diagrams, one for each part of the feature. To keep each one readable, the diagrams show the key columns only. The audit columns (<code>recorded_by</code>, <code>confirmed_by</code>, <code>confirmed_at</code>, <code>voided_by</code>, <code>voided_at</code>, <code>void_reason</code>, <code>created_at</code>) are listed in section 4.</p>
+<h3 id="31-planning-years-campaigns-rules-and-events">3.1 Planning: years, campaigns, rules and events</h3>
+<pre class="mermaid"><code>erDiagram
+    FAMILIES ||--o{ FINANCIAL_YEARS : has
+    FAMILIES ||--o{ CAMPAIGNS : runs
+    FAMILIES ||--o{ EVENTS : plans
+    FINANCIAL_YEARS ||--o{ CAMPAIGNS : contains
+    CAMPAIGNS ||--o{ CONTRIBUTION_RULES : "amount per category"
+    CAMPAIGNS ||--o{ CAMPAIGN_EVENTS : funds
+    EVENTS ||--o{ CAMPAIGN_EVENTS : "funded by"
+
+    FINANCIAL_YEARS {
+        uuid id PK
+        uuid family_id FK
+        int year "label, unique per family"
+        date start_date
+        date end_date
+        string status "open, closed"
+        numeric opening_balance
+        numeric closing_balance "set when closed"
+    }
+    CAMPAIGNS {
+        uuid id PK
+        uuid family_id FK
+        uuid financial_year_id FK
+        string name
+        string type "fixed, pledge, emergency"
+        date start_date
+        date end_date
+        numeric target_amount "null for pledge based"
+        bool includes_minors
+        string status "draft, open, closed, cancelled"
+    }
+    CONTRIBUTION_RULES {
+        uuid id PK
+        uuid campaign_id FK
+        string member_category "or default"
+        numeric cash_amount "required, KES value"
+        string in_kind_item "accepted instead of cash"
+    }
+    EVENTS {
+        uuid id PK
+        uuid family_id FK
+        string name
+        date event_date
+        numeric budget_amount "optional"
+        string status "planned, held, closed"
+    }
+    CAMPAIGN_EVENTS {
+        uuid id PK
+        uuid campaign_id FK
+        uuid event_id FK
+        numeric allocated_amount "optional"
+    }</code></pre>
+<h3 id="32-money-in-pledges-payments-fines-and-the-welfare-fund">3.2 Money in: pledges, payments, fines and the welfare fund</h3>
+<pre class="mermaid"><code>erDiagram
+    CAMPAIGNS ||--o{ PLEDGES : receives
+    MEMBERS ||--o{ PLEDGES : owes
+    MEMBERS ||--o{ FINES : receives
+    MEMBERS ||--o{ PAYMENTS : "counts for"
+    PLEDGES ||--o{ PLEDGE_INSTALLMENTS : "split into"
+    PLEDGES ||--o{ PAYMENTS : "paid by"
+    FINES ||--o{ PAYMENTS : "paid by"
+    STANDING_FUNDS ||--o{ PAYMENTS : receives
+    STANDING_FUNDS ||--o{ FINES : "collects into"
+
+    PLEDGES {
+        uuid id PK
+        uuid family_id FK
+        uuid member_id FK
+        uuid campaign_id FK
+        uuid pledged_by FK
+        string source "assessed, voluntary"
+        numeric amount
+        numeric fulfilled_amount
+        string status "active, fulfilled, cancelled"
+    }
+    PLEDGE_INSTALLMENTS {
+        uuid id PK
+        uuid pledge_id FK
+        numeric amount
+        date due_date
+        string status "pending, paid, overdue"
+    }
+    FINES {
+        uuid id PK
+        uuid family_id FK
+        uuid member_id FK
+        uuid financial_year_id FK
+        uuid standing_fund_id FK
+        string reason
+        numeric amount
+        numeric fulfilled_amount
+        date date
+        string status "unpaid, partial, paid, waived, voided"
+    }
+    PAYMENTS {
+        uuid id PK
+        uuid family_id FK
+        uuid member_id FK "who it counts for"
+        uuid paid_by FK "who actually paid"
+        uuid pledge_id FK "exactly one of three"
+        uuid fine_id FK "exactly one of three"
+        uuid standing_fund_id FK "exactly one of three"
+        string method "cash, bank_transfer, mpesa, in_kind"
+        numeric amount "KES value"
+        string mpesa_transaction_code "unique"
+        string idempotency_key "unique per family"
+        string status "pending, confirmed, rejected, voided"
+    }
+    STANDING_FUNDS {
+        uuid id PK
+        uuid family_id FK "one per family"
+        string name
+        numeric balance
+    }</code></pre>
+<h3 id="33-money-out-expenses">3.3 Money out: expenses</h3>
+<pre class="mermaid"><code>erDiagram
+    FINANCIAL_YEARS ||--o{ EXPENSES : contains
+    EVENTS ||--o{ EXPENSES : "spent on"
+    STANDING_FUNDS ||--o{ EXPENSES : pays
+    MEMBERS ||--o{ EXPENSES : "beneficiary of"
+
+    EXPENSES {
+        uuid id PK
+        uuid family_id FK
+        uuid financial_year_id FK
+        uuid event_id FK "exactly one of two"
+        uuid standing_fund_id FK "exactly one of two"
+        uuid beneficiary_member_id FK "optional"
+        string category "from a fixed list"
+        numeric amount
+        date date
+        string status "pending, approved, rejected, voided"
+        uuid recorded_by FK
+        uuid approved_by FK
+    }</code></pre>
+<hr />
+<h2 id="4-changes-to-the-existing-models">4. Changes to the existing models</h2>
+<p>These are the differences between the models in the repository now and the design above. The migration is written by hand, because Alembic does not detect CHECK constraint changes or data backfills.</p>
+<p><strong>Campaign</strong>
+- Add <code>name</code>, <code>created_by</code>.
+- Status becomes <code>draft</code>, <code>open</code>, <code>closed</code>, <code>cancelled</code>, default <code>draft</code>.
+- Remove the <code>standing</code> type. The welfare fund is the <code>StandingFund</code> table, not a campaign.</p>
+<p><strong>ContributionRule</strong>
+- <code>cash_amount</code> becomes required and is always the KES value. <code>in_kind_item</code> now means "this item is accepted instead of cash", so every pledge has a money amount.
+- <code>UNIQUE(campaign_id, member_category)</code>.</p>
+<p><strong>Pledge</strong>
+- Add <code>family_id</code>, <code>pledged_by</code>, <code>source</code>, <code>status</code>.
+- <code>UNIQUE(member_id, campaign_id)</code>.
+- <code>CHECK (amount &gt; 0)</code> and <code>CHECK (fulfilled_amount &gt;= 0)</code>.</p>
+<p><strong>Payment</strong>
+- Add <code>family_id</code>, <code>fine_id</code>, <code>paid_by</code>, <code>recorded_by</code>, <code>confirmed_at</code>, <code>voided_by</code>, <code>voided_at</code>, <code>void_reason</code>.
+- Status gains <code>voided</code>.
+- <code>CHECK</code> that exactly one of <code>pledge_id</code>, <code>fine_id</code>, <code>standing_fund_id</code> is set.
+- <code>CHECK (amount &gt; 0)</code>.
+- <code>idempotency_key</code> becomes unique per family, not across the platform.</p>
+<p><strong>Fine</strong>
+- Add <code>family_id</code>, <code>financial_year_id</code>, <code>standing_fund_id</code>, <code>recorded_by</code>, <code>fulfilled_amount</code>, <code>status</code>, <code>created_at</code>.
+- <code>CHECK (amount &gt; 0)</code>.</p>
+<p><strong>Expense</strong>
+- Add <code>status</code>, <code>approved_at</code>, <code>voided_by</code>, <code>voided_at</code>, <code>void_reason</code>.
+- <code>CHECK</code> that exactly one of <code>event_id</code>, <code>standing_fund_id</code> is set.
+- Category is validated against a fixed list at the schema layer.</p>
+<p><strong>Event</strong>
+- Add <code>budget_amount</code>, <code>status</code>.</p>
+<p><strong>CampaignEvent</strong>
+- Add <code>allocated_amount</code>, optional.</p>
+<p><strong>FinancialYear</strong>
+- Add <code>start_date</code>, <code>end_date</code> and <code>status</code>. Each family sets its own year dates.
+- <code>CHECK (end_date &gt; start_date)</code>.
+- <code>UNIQUE(family_id, year)</code>. <code>year</code> stays as the label of the year (for example 2026).
+- A family's years may not overlap. The service enforces it when a year is created.
+- Existing rows are backfilled in the migration as 1 January to 31 December of their <code>year</code>.</p>
+<p><strong>StandingFund</strong>
+- <code>UNIQUE(family_id)</code>. One welfare fund per family, created the first time it is needed.</p>
+<p><strong>Audit</strong>
+- New actions: <code>open_campaign</code>, <code>close_campaign</code>, <code>cancel_campaign</code>, <code>confirm_payment</code>, <code>reject_payment</code>, <code>void_payment</code>, <code>waive_fine</code>, <code>void_fine</code>, <code>approve_expense</code>, <code>reject_expense</code>, <code>void_expense</code>, <code>close_financial_year</code>.
+- New entity types: <code>financial_year</code>, <code>campaign</code>, <code>pledge</code>, <code>payment</code>, <code>fine</code>, <code>expense</code>, <code>event</code>, <code>standing_fund</code>.
+- The audit table's CHECK constraints are widened in the same migration.</p>
+<p>Financial years carry their own start and end dates, because families run their year differently. A record's year is found from its date: a fine, expense or confirmed payment belongs to the year whose dates contain it.</p>
+<hr />
+<h2 id="5-campaigns">5. Campaigns</h2>
+<h3 id="51-types">5.1 Types</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Who owes</th>
+<th>How amounts are set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fixed</code></td>
+<td>Every eligible member, assessed automatically</td>
+<td><code>ContributionRule</code> rows by member category</td>
+</tr>
+<tr>
+<td><code>pledge</code></td>
+<td>Whoever chooses to pledge</td>
+<td>The member (or an officer on their behalf) names an amount</td>
+</tr>
+<tr>
+<td><code>emergency</code></td>
+<td>Same as <code>pledge</code>, but short-notice</td>
+<td>Same as <code>pledge</code></td>
+</tr>
+</tbody>
+</table>
+<p>The welfare fund is not a campaign. See section 9.</p>
+<h3 id="52-lifecycle">5.2 Lifecycle</h3>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; draft: Chairman creates
+    draft --&gt; open: Chairman opens
+    draft --&gt; cancelled: Chairman cancels
+    open --&gt; closed: Chairman closes or end date passes
+    open --&gt; cancelled: Chairman cancels
+    closed --&gt; [*]
+    cancelled --&gt; [*]</code></pre>
+<ul>
+<li><strong>Draft.</strong> Rules can be added and edited. No pledges exist yet.</li>
+<li><strong>Open.</strong> Rules are locked. For a <code>fixed</code> campaign, the system has created the member pledges. Pledges and payments are accepted.</li>
+<li><strong>Closed.</strong> No new pledges or payments. Existing records stay.</li>
+<li><strong>Cancelled.</strong> Only allowed if no confirmed payment exists. Otherwise the Chairman must close it and void the payments with reasons.</li>
+</ul>
+<h3 id="53-opening-a-fixed-campaign">5.3 Opening a fixed campaign</h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Chairman opens campaign] --&gt; B[Find eligible members]
+    B --&gt; C{Includes minors?}
+    C -- no --&gt; D[Active adults only]
+    C -- yes --&gt; E[Active adults and active minors]
+    D --&gt; F[For each member, find the rule for their category]
+    E --&gt; F
+    F --&gt; G{Rule found?}
+    G -- yes --&gt; H[Create assessed pledge for that amount]
+    G -- no --&gt; I{Default rule exists?}
+    I -- yes --&gt; H
+    I -- no --&gt; J[Collect the member's name]
+    J --&gt; K{Any member without a rule?}
+    H --&gt; K
+    K -- yes --&gt; L[Opening fails, listing the names. Nothing is created]
+    K -- no --&gt; M[All pledges saved, campaign becomes open]</code></pre>
+<ul>
+<li>Opening is all or nothing. If any member has neither a rule for their category nor a <code>default</code> rule, the Chairman gets the full list of names and nothing is created.</li>
+<li>Amounts are a snapshot. Changing rules later has no effect on pledges already created, which is why rules lock when the campaign opens.</li>
+<li>A member onboarded after the campaign opened gets no automatic pledge. The Chairman can assess them with <code>POST /campaigns/{id}/pledges</code>.</li>
+<li>A minor's pledge has <code>pledged_by</code> set to their guardian, if they have one.</li>
+</ul>
+<h3 id="54-pledge-based-and-emergency-campaigns">5.4 Pledge-based and emergency campaigns</h3>
+<p>A member pledges once per campaign. The pledge can be raised later but not lowered below what is already paid. A member who cannot log in (including every minor) has their pledge recorded by an officer, with <code>pledged_by</code> set to the person who made the commitment.</p>
+<hr />
+<h2 id="6-pledges-and-installments">6. Pledges and installments</h2>
+<ul>
+<li><code>fulfilled_amount</code> goes up when a payment is confirmed and down when it is voided.</li>
+<li>Status moves <code>active</code> to <code>fulfilled</code> when <code>fulfilled_amount &gt;= amount</code>, and back to <code>active</code> if a void drops it below.</li>
+<li>A pledge can be split into installments. The installments must add up exactly to the pledge amount.</li>
+<li>Installments are not paid individually. Payments apply oldest-first: an installment counts as paid when the pledge's <code>fulfilled_amount</code> covers the total of that installment and all earlier ones.</li>
+<li>A daily job (<code>scripts/mark_overdue_installments.py</code>) marks as <code>overdue</code> any installment past its due date that is not yet covered. It is safe to run repeatedly.</li>
+</ul>
+<hr />
+<h2 id="7-payments">7. Payments</h2>
+<h3 id="71-who-records-who-confirms">7.1 Who records, who confirms</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Starting status</th>
+<th>Confirmed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Treasurer records cash, a bank transfer or an M-Pesa payment</td>
+<td><code>confirmed</code> straight away</td>
+<td>Not needed. The Treasurer is the recorder and the confirmer</td>
+</tr>
+<tr>
+<td>A member submits a claim that they paid (their M-Pesa code, say)</td>
+<td><code>pending</code></td>
+<td>Treasurer or Chairman</td>
+</tr>
+<tr>
+<td>A claim is wrong</td>
+<td><code>rejected</code></td>
+<td>Treasurer or Chairman, with a reason</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-payment-lifecycle">7.2 Payment lifecycle</h3>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; pending: member submits claim
+    [*] --&gt; confirmed: Treasurer records directly
+    pending --&gt; confirmed: Treasurer or Chairman confirms
+    pending --&gt; rejected: Treasurer or Chairman rejects
+    confirmed --&gt; voided: Treasurer or Chairman voids with reason
+    rejected --&gt; [*]
+    voided --&gt; [*]</code></pre>
+<h3 id="73-what-happens-when-a-payment-becomes-confirmed">7.3 What happens when a payment becomes confirmed</h3>
+<p>All of this runs in one transaction, after locking the target row:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    actor T as Treasurer
+    participant API as API
+    participant DB as Database
+
+    T-&gt;&gt;API: POST /payments (target, amount, method, reference)
+    API-&gt;&gt;DB: Check campaign or year is open, member is in the family
+    API-&gt;&gt;DB: Check M-Pesa code and idempotency key are new
+    API-&gt;&gt;DB: Lock the target row (pledge, fine or fund)
+    API-&gt;&gt;DB: Insert payment as confirmed
+    alt target is a pledge
+        API-&gt;&gt;DB: fulfilled_amount += amount, update pledge status
+    else target is a fine
+        API-&gt;&gt;DB: fulfilled_amount += amount, update fine status
+        API-&gt;&gt;DB: standing fund balance += amount
+    else target is the standing fund
+        API-&gt;&gt;DB: balance += amount
+    end
+    API-&gt;&gt;DB: Audit: confirm_payment
+    API--&gt;&gt;T: 201</code></pre>
+<p>Voiding runs the same steps in reverse and writes <code>void_payment</code> with the reason.</p>
+<h3 id="74-rules">7.4 Rules</h3>
+<ul>
+<li>Exactly one target: a pledge, a fine or the standing fund. A database CHECK enforces it.</li>
+<li>The payment's amount is a KES amount. For an in-kind payment the Treasurer enters the KES value, and <code>item_description</code> records what was given (for example "one hen").</li>
+<li>A payment may not push a pledge or fine above its amount. An overpayment is rejected, and the Treasurer must record the surplus against the standing fund as a separate payment.</li>
+<li>The same M-Pesa transaction code or idempotency key can never create a second payment. A retry gets the original payment back.</li>
+<li>A payment cannot be recorded against a closed campaign, a cancelled pledge, or a closed financial year.</li>
+</ul>
+<hr />
+<h2 id="8-fines">8. Fines</h2>
+<ul>
+<li>Recorded by the Chairman or Secretary against a member, with a reason, an amount and a date. The fine belongs to the financial year of its date.</li>
+<li>Collected through the same <code>payments</code> table, with <code>fine_id</code> set.</li>
+<li>Fine money goes into the family's standing fund. Confirming a payment against a fine increases both <code>Fine.fulfilled_amount</code> and <code>StandingFund.balance</code>. Voiding reverses both.</li>
+<li>Status: <code>unpaid</code>, <code>partial</code>, <code>paid</code>, <code>waived</code>, <code>voided</code>.</li>
+<li><strong>Waived</strong> means the Chairman forgave a real fine. It requires a reason and is audited.</li>
+<li><strong>Voided</strong> means the fine was recorded by mistake. It requires a reason and is audited.</li>
+<li>A fine with confirmed payments cannot be waived or voided until those payments are voided.</li>
+<li>Privacy: a member sees their own fines. Other members see only the family totals.</li>
+</ul>
+<hr />
+<h2 id="9-standing-fund-welfare-fund">9. Standing fund (welfare fund)</h2>
+<ul>
+<li>One per family, created the first time it is needed.</li>
+<li>Money in: payments aimed at it, and fine payments.</li>
+<li>Money out: approved expenses drawn on it.</li>
+<li><code>balance</code> goes up on a confirmed payment, and down on an approved expense. Both are reversed by voids.</li>
+<li><strong>A payout that would take the balance below zero is blocked.</strong> The approval fails with a clear message. The Treasurer corrects the amount or records the missing money first.</li>
+</ul>
+<hr />
+<h2 id="10-events-event-funding-and-expenses">10. Events, event funding and expenses</h2>
+<h3 id="101-events">10.1 Events</h3>
+<p>An event is what the money is for: a wedding, a funeral, an annual meeting. It has a date, an optional budget and a status (<code>planned</code>, <code>held</code>, <code>closed</code>).</p>
+<h3 id="102-linking-campaigns-to-events">10.2 Linking campaigns to events</h3>
+<p>A campaign can fund several events, and an event can be funded by several campaigns. <code>CampaignEvent</code> records the link and an optional <code>allocated_amount</code>.</p>
+<ul>
+<li>If the Chairman sets allocations, each event shows what it was allocated and what has been spent.</li>
+<li>If allocations are empty, the event shows the linked campaigns' totals without a split.</li>
+<li>The sum of a campaign's allocations may not exceed its target amount (when it has one).</li>
+</ul>
+<h3 id="103-expenses">10.3 Expenses</h3>
+<p>An expense is money out, with exactly one source: an event or the standing fund. If a cost spans both, the Treasurer records two expenses.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; pending: Treasurer records
+    pending --&gt; approved: Chairman approves
+    pending --&gt; rejected: Chairman rejects with reason
+    approved --&gt; voided: Chairman voids with reason
+    rejected --&gt; [*]
+    voided --&gt; [*]</code></pre>
+<ul>
+<li>Every expense needs the Chairman's approval. For now there is no threshold.</li>
+<li>The approver must be a different person from the recorder.</li>
+<li>A pending expense does not count in any balance. Approval is what makes it count.</li>
+<li>On approval of a standing-fund expense, the balance goes down. If that would take it below zero, the approval is blocked.</li>
+<li><code>beneficiary_member_id</code>, when given, must belong to the same family.</li>
+<li>Category must come from a fixed list (for example transport, food, venue, bereavement support, printing, other), so reports group cleanly.</li>
+</ul>
+<hr />
+<h2 id="11-financial-years">11. Financial years</h2>
+<ul>
+<li>A financial year has a start date, an end date, an opening balance, a status and, once closed, a closing balance.</li>
+<li>The Chairman creates a year and sets its dates. Years of one family may not overlap.</li>
+<li>A campaign belongs to one year, and its start and end dates must fall inside that year.</li>
+<li>A fine or expense belongs to the year whose dates contain its date. If no open year contains the date, it is rejected.</li>
+<li><strong>Closing a year</strong> is allowed only when every campaign in it is closed or cancelled, no payment is <code>pending</code>, and no expense is <code>pending</code>. If any remain, closing fails with a list.</li>
+<li>On closing, the system computes the closing balance (opening balance plus confirmed income minus approved expenses) and stores it.</li>
+<li>A new year's opening balance defaults to the closing balance of the latest closed year before it. The earlier year must be closed first.</li>
+<li>A closed year accepts no new records. A correction for a closed year is entered as a dated record in the current year.</li>
+<li>Closing writes <code>close_financial_year</code> to the audit log.</li>
+</ul>
+<hr />
+<h2 id="12-roles-and-permissions">12. Roles and permissions</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Chairman</th>
+<th>Secretary</th>
+<th>Treasurer</th>
+<th>Member</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create financial year, close it</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Create, open, close, cancel a campaign</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Add and edit contribution rules (draft only)</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Create events, link campaigns to events</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>View campaigns and totals</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Totals only</td>
+</tr>
+<tr>
+<td>Assess or record a pledge for someone</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Own pledge only</td>
+</tr>
+<tr>
+<td>Record a payment</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Submit a claim for themselves</td>
+</tr>
+<tr>
+<td>Confirm or reject a claim, void a payment</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Record, waive or void a fine</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Record an expense</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Approve, reject or void an expense</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>View own pledges, payments, fines</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>View any member's records</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="13-endpoints">13. Endpoints</h2>
+<h3 id="part-1-financial-years-campaigns-rules-assessed-pledges">Part 1: financial years, campaigns, rules, assessed pledges</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Who</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/financial-years</code></td>
+<td>Chairman</td>
+<td>Create a year</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/financial-years</code></td>
+<td>Chairman, Secretary, Treasurer</td>
+<td>List years</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/financial-years/{id}/close</code></td>
+<td>Chairman</td>
+<td>Close a year</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/campaigns</code></td>
+<td>Chairman</td>
+<td>Create a draft campaign</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/campaigns</code></td>
+<td>Officers</td>
+<td>List, filter by year or status</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/campaigns/{id}</code></td>
+<td>Officers</td>
+<td>One campaign with totals</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/campaigns/{id}/rules</code></td>
+<td>Chairman</td>
+<td>Set the rules (draft only)</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/campaigns/{id}/open</code></td>
+<td>Chairman</td>
+<td>Open, assessing members if fixed</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/campaigns/{id}/close</code></td>
+<td>Chairman</td>
+<td>Close</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/campaigns/{id}/cancel</code></td>
+<td>Chairman</td>
+<td>Cancel</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/campaigns/{id}/pledges</code></td>
+<td>Chairman</td>
+<td>Assess a late-joining member</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-2-pledges-and-payments">Part 2: pledges and payments</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Who</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/campaigns/{id}/my-pledge</code></td>
+<td>Member</td>
+<td>Make or raise my own pledge</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/pledges</code></td>
+<td>Officers</td>
+<td>Record a pledge for a member</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/pledges</code></td>
+<td>Officers</td>
+<td>List, filter by campaign or member</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/pledges/me</code></td>
+<td>Member</td>
+<td>My pledges</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/pledges/{id}/installments</code></td>
+<td>Officers</td>
+<td>Set the installment plan</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/pledges/{id}/cancel</code></td>
+<td>Chairman</td>
+<td>Cancel (only if nothing paid)</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/payments</code></td>
+<td>Chairman, Treasurer</td>
+<td>Record a confirmed payment</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/payments/claims</code></td>
+<td>Member</td>
+<td>Submit a payment claim</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/payments/{id}/confirm</code></td>
+<td>Chairman, Treasurer</td>
+<td>Confirm a claim</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/payments/{id}/reject</code></td>
+<td>Chairman, Treasurer</td>
+<td>Reject a claim, with reason</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/payments/{id}/void</code></td>
+<td>Chairman, Treasurer</td>
+<td>Void, with reason</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/payments</code></td>
+<td>Officers</td>
+<td>List, filter</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/payments/me</code></td>
+<td>Member</td>
+<td>My payments</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-3-fines-and-the-standing-fund">Part 3: fines and the standing fund</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Who</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/fines</code></td>
+<td>Chairman, Secretary</td>
+<td>Record a fine</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/fines</code></td>
+<td>Officers</td>
+<td>List</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/fines/me</code></td>
+<td>Member</td>
+<td>My fines</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/fines/{id}/waive</code></td>
+<td>Chairman</td>
+<td>Waive, with reason</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/fines/{id}/void</code></td>
+<td>Chairman, Secretary</td>
+<td>Void, with reason</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/standing-fund</code></td>
+<td>Officers</td>
+<td>Balance and recent movements</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-4-events-and-expenses">Part 4: events and expenses</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Who</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/events</code></td>
+<td>Chairman, Secretary</td>
+<td>Create an event</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/events</code></td>
+<td>Officers</td>
+<td>List with budget, funding and spend</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/events/{id}/campaigns</code></td>
+<td>Chairman, Secretary</td>
+<td>Link campaigns, with optional allocations</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/expenses</code></td>
+<td>Treasurer</td>
+<td>Record, pending</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/expenses/{id}/approve</code></td>
+<td>Chairman</td>
+<td>Approve</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/expenses/{id}/reject</code></td>
+<td>Chairman</td>
+<td>Reject, with reason</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/expenses/{id}/void</code></td>
+<td>Chairman</td>
+<td>Void, with reason</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/expenses</code></td>
+<td>Officers</td>
+<td>List, filter</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-5-reports-and-jobs">Part 5: reports and jobs</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path or script</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/reports/campaigns/{id}</code></td>
+<td>Progress: target, pledged, paid, outstanding, who still owes</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/reports/members/{id}/statement</code></td>
+<td>One member's pledges, fines and payments</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/reports/me/statement</code></td>
+<td>My own statement</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/reports/financial-years/{id}</code></td>
+<td>The annual report: income by source, expenses by category and event, opening and closing balance</td>
+</tr>
+<tr>
+<td>script</td>
+<td><code>mark_overdue_installments.py</code></td>
+<td>Daily: mark overdue installments</td>
+</tr>
+<tr>
+<td>script</td>
+<td><code>reconcile_balances.py</code></td>
+<td>Recompute stored totals from payments and report differences</td>
+</tr>
+</tbody>
+</table>
+<h3 id="error-mapping">Error mapping</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>HTTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record not in the caller's family</td>
+<td>404</td>
+</tr>
+<tr>
+<td>Wrong role</td>
+<td>403</td>
+</tr>
+<tr>
+<td>Duplicate M-Pesa code or idempotency key</td>
+<td>409 (idempotent retry returns the original)</td>
+</tr>
+<tr>
+<td>Closed campaign, closed year, overpayment, overdraft, member without a rule, approver same as recorder</td>
+<td>422</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-audit-trail">14. Audit trail</h2>
+<p>Every state change writes an audit entry with who did it, to which record, and the before and after status. Money amounts appear in the snapshot. Reasons are always recorded for voids, rejections, waivers and cancellations.</p>
+<p>The audit service already refuses snapshots containing a password, token or date of birth. It stays that way.</p>
+<hr />
+<h2 id="15-code-layout">15. Code layout</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Files</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Models</td>
+<td><code>financial_year.py</code>, <code>campaign.py</code>, <code>contribution_rule.py</code>, <code>pledge.py</code>, <code>pledge_installment.py</code>, <code>payment.py</code>, <code>fine.py</code>, <code>standing_fund.py</code>, <code>event.py</code>, <code>campaign_event.py</code>, <code>expense.py</code></td>
+</tr>
+<tr>
+<td>Services</td>
+<td><code>financial_year_service.py</code>, <code>campaign_service.py</code>, <code>pledge_service.py</code>, <code>payment_service.py</code>, <code>fine_service.py</code>, <code>standing_fund_service.py</code>, <code>event_service.py</code>, <code>expense_service.py</code>, <code>report_service.py</code></td>
+</tr>
+<tr>
+<td>Schemas</td>
+<td>One file per area, with a shared <code>money.py</code> for the amount type</td>
+</tr>
+<tr>
+<td>Routers</td>
+<td>One per area, mounted under the paths in section 13</td>
+</tr>
+<tr>
+<td>Scripts</td>
+<td><code>mark_overdue_installments.py</code>, <code>reconcile_balances.py</code></td>
+</tr>
+</tbody>
+</table>
+<p>Services hold the rules and never commit. Routers are thin: check the role, call one service function, commit, return the response. <code>payment_service</code> is the only code that changes <code>fulfilled_amount</code> and <code>balance</code>.</p>
+<hr />
+<h2 id="16-build-order">16. Build order</h2>
+<ol>
+<li><strong>Part 1:</strong> model changes and migration, financial years, campaigns, rules, assessed pledges.</li>
+<li><strong>Part 2:</strong> voluntary pledges, installments, payments (record, claim, confirm, reject, void), balance logic.</li>
+<li><strong>Part 3:</strong> fines and the standing fund.</li>
+<li><strong>Part 4:</strong> events, event funding, expenses with approval.</li>
+<li><strong>Part 5:</strong> reports and the two scripts.</li>
+</ol>
+<p>Each part ends with a test walkthrough before the next one starts.</p>
+<hr />
+<h2 id="17-assumptions-and-open-items">17. Assumptions and open items</h2>
+<ul>
+<li>A confirmed payment into the welfare fund belongs to the year containing the date it was confirmed.</li>
+<li>A member who joins after a fixed campaign opens must be assessed by hand.</li>
+<li>Late fees and penalties on overdue pledges are not automatic. An officer records a fine.</li>
+<li>M-Pesa payments are entered by hand. An automatic M-Pesa callback is a separate later feature.</li>
+<li>Recurring campaigns (the same levy every month) are handled by installments for now. A scheduler that creates next month's campaign is not built.</li>
+<li>Households do not owe or pay as a unit. Contributions are per member.</li>
+<li>Spending approval has no amount threshold. Every expense needs the Chairman.</li>
+<li>Exports (PDF, Excel) of reports are not built yet.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../feature_members_erd/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Members ERD">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Members ERD
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Vincent Muoki
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "header.autohide"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

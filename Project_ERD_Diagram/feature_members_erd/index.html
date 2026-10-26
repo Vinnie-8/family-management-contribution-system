@@ -1,0 +1,1829 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://Vinnie-8.github.io/family-management-contribution-system/Project_ERD_Diagram/feature_members_erd/">
+      
+      
+        <link rel="prev" href="../feature_auth_erd/">
+      
+      
+        <link rel="next" href="../feature_contribution_erd/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Members ERD - Family-Management-Contribution-System-Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#feature-members-households-and-onboarding" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Family-Management-Contribution-System-Documentation" class="md-header__button md-logo" aria-label="Family-Management-Contribution-System-Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Family-Management-Contribution-System-Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Members ERD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user_research/" class="md-tabs__link">
+          
+  
+  
+  User Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Authentication_Authorization_study/auth_casestudy/" class="md-tabs__link">
+          
+  
+  
+  Authentication & Authorization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../fastapi_auth_casestudy/fastapi_authentication/" class="md-tabs__link">
+          
+  
+  
+  FastAPI_Authentication
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Database_design_and_normalization/db_design_normalization/" class="md-tabs__link">
+          
+  
+  
+  Database_Design_Normalization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../feature_auth_erd/" class="md-tabs__link">
+          
+  
+  
+  BACKEND_ERD_Diagram
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Family-Management-Contribution-System-Documentation" class="md-nav__button md-logo" aria-label="Family-Management-Contribution-System-Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Family-Management-Contribution-System-Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_research/summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_research/feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feedback
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication & Authorization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Authentication & Authorization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Authentication_Authorization_study/auth_casestudy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Study
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastAPI_Authentication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FastAPI_Authentication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fastapi_auth_casestudy/fastapi_authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Study
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database_Design_Normalization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Database_Design_Normalization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database_design_and_normalization/db_design_normalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Study
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database_design_and_normalization/normal_forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Normal Forms Case Study
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BACKEND_ERD_Diagram
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BACKEND_ERD_Diagram
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feature_auth_erd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication ERD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Members ERD
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Members ERD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-design-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Design rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-entity-relationship-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Entity relationship diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Flows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-onboarding-an-adult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Onboarding an adult
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-onboarding-a-minor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Onboarding a minor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-coming-of-age-daily-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Coming of age (daily job)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-households-and-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Households and branches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-deactivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Deactivation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-date-of-birth-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Date-of-birth lookup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Endpoints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#members" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Members
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#households" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Households
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-audit-trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Audit trail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-code-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Code layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-assumptions-and-open-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Assumptions and open items
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feature_contribution_erd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution ERD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="feature-members-households-and-onboarding">Feature: Members, Households and Onboarding</h1>
+<h2 id="1-overview">1. Overview</h2>
+<p>This feature covers everything that happens after a family has been created: how members are added, how they are grouped into households, how minors become adult members, and how an officer can deactivate a member or look up a private date of birth.</p>
+<p><strong>What it delivers</strong></p>
+<ul>
+<li>Onboarding of adults and minors by the Chairman or Secretary</li>
+<li>One-time activation links, so no temporary passwords exist anywhere</li>
+<li>Households (nuclear families) with branches recorded when a household splits off</li>
+<li>Automatic coming-of-age invitations, using a per-family age limit</li>
+<li>Deactivate and reactivate, never delete</li>
+<li>An audited, reason-required date-of-birth lookup</li>
+</ul>
+<p><strong>Roles that matter here</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Can do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chairman</td>
+<td>Everything below, including deactivating another chairman</td>
+</tr>
+<tr>
+<td>Secretary</td>
+<td>Onboard, manage households, invites, deactivate, DOB lookup</td>
+</tr>
+<tr>
+<td>Treasurer</td>
+<td>View the member directory and households only</td>
+</tr>
+<tr>
+<td>Member</td>
+<td>View own record only (<code>GET /members/me</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-design-rules">2. Design rules</h2>
+<ol>
+<li><strong>One person, one family.</strong> Phone, email and ID number are unique across the whole platform.</li>
+<li><strong>The family always comes from the logged-in officer</strong>, never from the request body. A member of another family is reported as "not found", so nothing leaks across families.</li>
+<li><strong>Every member belongs to exactly one household.</strong> The household is required and must exist before the member is created.</li>
+<li><strong>Contributions are per member</strong>, not per household. A member's history moves with them when they change household.</li>
+<li><strong>The age limit is per family</strong> (<code>families.age_of_majority</code>, default 18, range 1 to 30). It is typed in by the Chairman at registration. It is not in <code>.env</code>.</li>
+<li><strong>Minor status is computed</strong>, never stored. A member is a minor when they have a date of birth and their age is below their family's limit.</li>
+<li><strong>Date of birth is kept only for minors.</strong> Adults give none. It is deleted when the minor activates their account.</li>
+<li><strong>Date of birth is private.</strong> It never appears in a normal response or in an audit snapshot. The only way to see it is the audited lookup.</li>
+<li><strong>Minors have no account and no credentials.</strong> They join their guardian's household by default.</li>
+<li><strong>Members are deactivated, never deleted</strong>, so financial history stays intact.</li>
+</ol>
+<hr />
+<h2 id="3-entity-relationship-diagram">3. Entity relationship diagram</h2>
+<pre class="mermaid"><code>erDiagram
+    FAMILIES ||--o{ HOUSEHOLDS : has
+    FAMILIES ||--o{ MEMBERS : has
+    HOUSEHOLDS ||--o{ MEMBERS : "lives in"
+    HOUSEHOLDS o|--o{ HOUSEHOLDS : "branched from"
+    HOUSEHOLDS o|--o| MEMBERS : "headed by"
+    MEMBERS ||--o{ MEMBER_ROLES : holds
+    ROLES ||--o{ MEMBER_ROLES : assigned
+    MEMBERS ||--o{ GUARDIAN_LINKS : "guardian of"
+    MEMBERS ||--o{ GUARDIAN_LINKS : "minor in"
+    MEMBERS ||--o{ ACTIVATION_TOKENS : receives
+    MEMBERS ||--o{ AUDIT_LOGS : "acts in"
+
+    FAMILIES {
+        uuid id PK
+        string name
+        int age_of_majority "default 18, check 1 to 30"
+    }
+    HOUSEHOLDS {
+        uuid id PK
+        uuid family_id FK
+        string name
+        uuid head_member_id FK "nullable, set after first member"
+        uuid parent_household_id FK "nullable, records the branch"
+    }
+    MEMBERS {
+        uuid id PK
+        uuid family_id FK
+        uuid household_id FK "required"
+        string name
+        string id_number "unique"
+        string phone_number "unique, +254 format"
+        string email "unique"
+        string category
+        date date_of_birth "minors only, private"
+        string invite_contact "minors only, parent phone or email"
+        bool is_active
+        string hashed_password "null until activated"
+        datetime created_at
+    }
+    GUARDIAN_LINKS {
+        uuid guardian_member_id FK
+        uuid minor_member_id FK
+        string relationship_label
+    }
+    ACTIVATION_TOKENS {
+        uuid id PK
+        uuid member_id FK
+        string token_hash "SHA-256, never the raw token"
+        datetime expires_at "48 hours"
+        datetime used_at "single use"
+    }</code></pre>
+<p><strong>Database checks on <code>members</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>check_password_needs_contact</code></td>
+<td>A password can only exist if there is a phone or an email</td>
+</tr>
+<tr>
+<td><code>check_invite_contact_minors_only</code></td>
+<td><code>invite_contact</code> is only allowed when <code>date_of_birth</code> is set</td>
+</tr>
+<tr>
+<td><code>check_phone_format</code></td>
+<td><code>^\+254[17][0-9]{8}$</code></td>
+</tr>
+<tr>
+<td><code>check_id_number_format</code></td>
+<td>Exactly 8 digits</td>
+</tr>
+</tbody>
+</table>
+<p><code>households.head_member_id</code> and <code>members.household_id</code> point at each other. The foreign key from households to members is declared with <code>use_alter</code>, and the code creates the household first and sets its head afterwards.</p>
+<hr />
+<h2 id="4-flows">4. Flows</h2>
+<h3 id="41-onboarding-an-adult">4.1 Onboarding an adult</h3>
+<pre class="mermaid"><code>sequenceDiagram
+    actor O as Chairman or Secretary
+    participant API as API
+    participant DB as Database
+    actor M as New adult member
+
+    O-&gt;&gt;API: POST /members (adult, household_id, phone or email)
+    API-&gt;&gt;DB: Check phone, email, ID are unused
+    API-&gt;&gt;DB: Create member (no password), assign "member" role
+    API-&gt;&gt;DB: Store hashed one-time token (48 hours)
+    API-&gt;&gt;DB: Audit: create
+    API--&gt;&gt;M: SMS or email with link ending in #token=...
+    API--&gt;&gt;O: 201, invite_sent = true
+    M-&gt;&gt;API: POST /auth/activate (token, new password)
+    API-&gt;&gt;DB: Mark token used, save password hash
+    API--&gt;&gt;M: JWT, already logged in</code></pre>
+<p>The token sits in the URL fragment (<code>#token=</code>), so it never reaches server logs. Opening the page consumes nothing. Only the POST consumes the token.</p>
+<h3 id="42-onboarding-a-minor">4.2 Onboarding a minor</h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Officer submits member_type = minor] --&gt; B{Guardian given?}
+    B -- yes --&gt; C[Guardian must be an active adult]
+    C --&gt; D[Minor joins guardian's household unless one is given]
+    B -- no --&gt; E[household_id is required]
+    D --&gt; F{Age below family limit?}
+    E --&gt; F
+    F -- no --&gt; G[Rejected: onboard as adult instead]
+    F -- yes --&gt; H[Save member with date of birth and optional invite_contact]
+    H --&gt; I[Create guardian link if a guardian was given]
+    I --&gt; J[No account, no credentials, no invite]</code></pre>
+<p>A minor has no phone or email of their own. If a parent or guardian contact is known, it is stored as <code>invite_contact</code>.</p>
+<h3 id="43-coming-of-age-daily-job">4.3 Coming of age (daily job)</h3>
+<p><code>python -m scripts.process_coming_of_age</code>, scheduled once a day.</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Find members with a date of birth, no password, still active] --&gt; B{Age at or above family limit?}
+    B -- no --&gt; Z[Skip]
+    B -- yes --&gt; C{Live unused token already?}
+    C -- yes --&gt; Y[Skip, already invited]
+    C -- no --&gt; D{invite_contact present?}
+    D -- yes --&gt; E[Send activation link to invite_contact]
+    D -- no --&gt; F[Notify Chairman and Secretary: add a contact]
+    F --&gt; G[Officer calls PATCH invite-contact then POST resend-invite]
+    E --&gt; H[Member activates with their own phone or email]
+    G --&gt; H
+    H --&gt; I[Password set, date of birth and invite_contact deleted]</code></pre>
+<p>The job is safe to run repeatedly. A member who already has a live invite is skipped, and an officer is never sent the same notification twice.</p>
+<h3 id="44-households-and-branches">4.4 Households and branches</h3>
+<pre class="mermaid"><code>flowchart LR
+    P["Parents' household"] --&gt;|son marries| N["Son's new household&lt;br/&gt;parent = Parents' household"]
+    N --&gt; S[Son, set as head]
+    N --&gt; W[Wife, onboarded as a new member]</code></pre>
+<ul>
+<li>An adult child stays in the parents' household until a new one is created.</li>
+<li>When a son marries, an officer creates a household with <code>parent_household_id</code> set to the old one, moves the son in, onboards the wife into it, and sets the head.</li>
+<li>The head must be an active adult who lives in that household.</li>
+<li>If the head is moved out, the old household is left without a head until a new one is chosen.</li>
+<li>The wife joins this family. She must not belong to another family on the platform.</li>
+</ul>
+<h3 id="45-deactivation">4.5 Deactivation</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Result if it fails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target is in the officer's family</td>
+<td>404</td>
+</tr>
+<tr>
+<td>Target is not the officer themselves</td>
+<td>422</td>
+</tr>
+<tr>
+<td>Target is not already deactivated</td>
+<td>422</td>
+</tr>
+<tr>
+<td>Target is a chairman and the officer is not</td>
+<td>403</td>
+</tr>
+<tr>
+<td>Target is the last active chairman</td>
+<td>422</td>
+</tr>
+</tbody>
+</table>
+<p>A deactivated member is blocked from every endpoint at once, because <code>is_active</code> is checked on every authenticated request. Reactivation reverses it.</p>
+<h3 id="46-date-of-birth-lookup">4.6 Date-of-birth lookup</h3>
+<p>An officer sends <code>POST /members/{id}/date-of-birth-lookup</code> with a <code>reason</code> of at least 10 characters. The server writes an audit entry (<code>view_date_of_birth</code>) containing who looked, at whom, when, and the reason. The date itself is never written to the log. For an adult the response has <code>date_of_birth: null</code>.</p>
+<p>It is a POST, not a GET, because it writes an audit entry and the reason should not travel in the URL.</p>
+<hr />
+<h2 id="5-endpoints">5. Endpoints</h2>
+<h3 id="members">Members</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Who</th>
+<th>Purpose</th>
+<th>Main failures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/members/me</code></td>
+<td>Any logged-in member</td>
+<td>Own record and roles</td>
+<td>401</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/members</code></td>
+<td>Chairman, Secretary</td>
+<td>Onboard an adult or minor</td>
+<td>409 duplicate, 404 household, 422 rules</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/members</code></td>
+<td>Chairman, Secretary, Treasurer</td>
+<td>Directory, optional <code>?household_id=</code></td>
+<td>403</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/members/{id}</code></td>
+<td>Chairman, Secretary, Treasurer</td>
+<td>One member</td>
+<td>404</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/members/{id}/resend-invite</code></td>
+<td>Chairman, Secretary</td>
+<td>New activation link, cancels older ones</td>
+<td>422 minor or already activated</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td><code>/members/{id}/invite-contact</code></td>
+<td>Chairman, Secretary</td>
+<td>Set a minor's parent or guardian contact</td>
+<td>422 not a minor</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/members/{id}/deactivate</code></td>
+<td>Chairman, Secretary</td>
+<td>Block a member</td>
+<td>403, 422</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/members/{id}/reactivate</code></td>
+<td>Chairman, Secretary</td>
+<td>Unblock a member</td>
+<td>422 already active</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/members/{id}/date-of-birth-lookup</code></td>
+<td>Chairman, Secretary</td>
+<td>Audited date-of-birth lookup</td>
+<td>422 short reason</td>
+</tr>
+</tbody>
+</table>
+<h3 id="households">Households</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Who</th>
+<th>Purpose</th>
+<th>Main failures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/households</code></td>
+<td>Chairman, Secretary</td>
+<td>Create, optional <code>parent_household_id</code></td>
+<td>404 parent</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/households</code></td>
+<td>Chairman, Secretary, Treasurer</td>
+<td>List with member counts</td>
+<td>403</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/households/{id}</code></td>
+<td>Chairman, Secretary, Treasurer</td>
+<td>One household</td>
+<td>404</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td><code>/households/{id}/head</code></td>
+<td>Chairman, Secretary</td>
+<td>Set the head</td>
+<td>422 not a member, minor or inactive</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/households/{id}/members</code></td>
+<td>Chairman, Secretary</td>
+<td>Move a member in</td>
+<td>422 already there</td>
+</tr>
+</tbody>
+</table>
+<h3 id="error-mapping">Error mapping</h3>
+<table>
+<thead>
+<tr>
+<th>Domain error</th>
+<th>HTTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NotFoundError</td>
+<td>404</td>
+</tr>
+<tr>
+<td>PermissionDeniedError</td>
+<td>403</td>
+</tr>
+<tr>
+<td>DuplicateMemberError</td>
+<td>409</td>
+</tr>
+<tr>
+<td>BusinessRuleError</td>
+<td>422</td>
+</tr>
+<tr>
+<td>ContactRequiredError</td>
+<td>400</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-audit-trail">6. Audit trail</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Written when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>create</code> (member)</td>
+<td>A member is onboarded</td>
+</tr>
+<tr>
+<td><code>create</code> (household)</td>
+<td>A household is created</td>
+</tr>
+<tr>
+<td><code>update</code> (household)</td>
+<td>The head is changed</td>
+</tr>
+<tr>
+<td><code>update</code> (member)</td>
+<td>Invite contact set, or member reactivated</td>
+</tr>
+<tr>
+<td><code>change_household</code></td>
+<td>A member is moved</td>
+</tr>
+<tr>
+<td><code>deactivate_member</code></td>
+<td>A member is deactivated</td>
+</tr>
+<tr>
+<td><code>send_invite</code></td>
+<td>An activation link is issued</td>
+</tr>
+<tr>
+<td><code>activate_member</code></td>
+<td>A member activates</td>
+</tr>
+<tr>
+<td><code>view_date_of_birth</code></td>
+<td>An officer looks up a date of birth</td>
+</tr>
+</tbody>
+</table>
+<p>The audit service refuses any snapshot containing <code>hashed_password</code>, <code>date_of_birth</code>, <code>password</code> or <code>token</code>.</p>
+<hr />
+<h2 id="7-code-layout">7. Code layout</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Files</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Models</td>
+<td><code>member.py</code>, <code>household.py</code>, <code>family.py</code>, <code>guardian_link.py</code>, <code>activation_token.py</code></td>
+</tr>
+<tr>
+<td>Core</td>
+<td><code>age.py</code>, <code>permissions.py</code>, <code>normalizers.py</code>, <code>exceptions.py</code></td>
+</tr>
+<tr>
+<td>Services</td>
+<td><code>member_service.py</code>, <code>household_service.py</code>, <code>auth_service.py</code>, <code>audit_service.py</code></td>
+</tr>
+<tr>
+<td>Schemas</td>
+<td><code>members.py</code>, <code>households.py</code>, <code>common.py</code></td>
+</tr>
+<tr>
+<td>Routers</td>
+<td><code>members.py</code>, <code>households.py</code></td>
+</tr>
+<tr>
+<td>Scripts</td>
+<td><code>process_coming_of_age.py</code></td>
+</tr>
+</tbody>
+</table>
+<p>Services hold the rules and never commit. Routers are thin: check the role, call one service function, commit, return the response.</p>
+<hr />
+<h2 id="8-assumptions-and-open-items">8. Assumptions and open items</h2>
+<ul>
+<li>When a minor activates, the guardian link stays as a record but stops routing notifications.</li>
+<li>A spouse joining from another family must leave that family first. There is no "leave family" action yet.</li>
+<li>SMS and email are console stubs. A real gateway comes later.</li>
+<li>Bulk onboarding (many members at once) is not built.</li>
+<li>Chairman handover is not built. The last active chairman cannot be deactivated, which prevents a family being locked out.</li>
+<li>Login and activation have no rate limiting yet.</li>
+<li>Changing a password does not revoke tokens already issued.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../feature_auth_erd/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Authentication ERD">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Authentication ERD
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../feature_contribution_erd/" class="md-footer__link md-footer__link--next" aria-label="Next: Contribution ERD">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Contribution ERD
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Vincent Muoki
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.integrate", "search.suggest", "search.highlight", "header.autohide"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
