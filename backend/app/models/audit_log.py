@@ -12,25 +12,24 @@ from app.database import Base
 
 # Single source of truth: import these in audit_service and schemas too.
 AUDIT_ACTIONS = (
-    "create",
-    "update",
-    "delete",
-    "deactivate_member",
-    "reset_password",
-    # feature/auth redesign
-    "register_family",
-    "send_invite",
-    "activate_member",
-    "login",
-    "change_password",
-    "view_date_of_birth",
-    "change_household",
+    # existing
+    "create", "update", "delete", "deactivate_member", "reset_password",
+    "register_family", "send_invite", "activate_member", "login",
+    "change_password", "view_date_of_birth", "change_household",
+    # contributions (all added now so we only widen the database constraint once)
+    "open_campaign", "close_campaign", "cancel_campaign",
+    "confirm_payment", "reject_payment", "void_payment",
+    "waive_fine", "void_fine",
+    "approve_expense", "reject_expense", "void_expense",
+    "close_financial_year",
 )
+ 
 ENTITY_TYPES = (
-    "member",
-    "household",
-    "contribution_rule",
-    "family",
+    # existing
+    "member", "household", "contribution_rule", "family",
+    # contributions
+    "financial_year", "campaign", "pledge", "payment",
+    "fine", "expense", "event", "standing_fund",
 )
 
 

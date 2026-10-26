@@ -18,6 +18,7 @@ nav:
   - BACKEND_ERD_Diagram :
       - Authentication ERD : Project_ERD_Diagram/feature_auth_erd.md
       - Members ERD : Project_ERD_Diagram/feature_members_erd.md
+      - Contribution ERD : Project_ERD_Diagram/feature_contribution_erd.md
 
       
 

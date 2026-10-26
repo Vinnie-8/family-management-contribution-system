@@ -20,7 +20,8 @@ from app.core.exceptions import (
     NotFoundError,
     PermissionDeniedError,
 )
-from app.routers import auth ,members,households # adjust to your actual router modules
+from app.routers import auth ,members,households,financial_years,campaigns
+# adjust to your actual router modules
 
 app = FastAPI(title="Family Members API", version="1.0.0")
 
@@ -83,6 +84,8 @@ app.add_exception_handler(DomainError, _handler(400, "Request could not be proce
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(members.router, prefix="/members", tags=["members"])
 app.include_router(households.router, prefix="/households", tags=["households"])
+app.include_router(financial_years.router, prefix="/financial-years", tags=["financial years"])
+app.include_router(campaigns.router, prefix="/campaigns", tags=["campaigns"])
 
 
 # --- Health check (public, no auth) -------------------------------------------
