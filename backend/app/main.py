@@ -20,7 +20,7 @@ from app.core.exceptions import (
     NotFoundError,
     PermissionDeniedError,
 )
-from app.routers import auth ,members,households,financial_years,campaigns
+from app.routers import auth ,members,households,financial_years,campaigns,pledges,payments,fines,standing_fund,events,expenses,reports
 # adjust to your actual router modules
 
 app = FastAPI(title="Family Members API", version="1.0.0")
@@ -86,6 +86,13 @@ app.include_router(members.router, prefix="/members", tags=["members"])
 app.include_router(households.router, prefix="/households", tags=["households"])
 app.include_router(financial_years.router, prefix="/financial-years", tags=["financial years"])
 app.include_router(campaigns.router, prefix="/campaigns", tags=["campaigns"])
+app.include_router(pledges.router, prefix="/pledges", tags=["Pledges"])
+app.include_router(payments.router, prefix="/payments", tags=["Payments"])
+app.include_router(fines.router, prefix="/fines", tags=["Fines"])
+app.include_router(standing_fund.router, prefix="/standing-fund", tags=["Welfare fund"])
+app.include_router(events.router, prefix="/events", tags=["Events"])
+app.include_router(expenses.router, prefix="/expenses", tags=["Expenses"])
+app.include_router(reports.router, prefix="/reports", tags=["Reports"])
 
 
 # --- Health check (public, no auth) -------------------------------------------

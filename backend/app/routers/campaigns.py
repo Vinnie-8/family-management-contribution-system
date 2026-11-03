@@ -9,7 +9,7 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app.core.permissions import require_role
+from app.core.permissions import get_current_member, require_role
 from app.database import get_db
 from app.models.member import Member
 from app.schemas.campaigns import (
@@ -22,7 +22,8 @@ from app.schemas.campaigns import (
     RuleResponse,
     SetRulesRequest,
 )
-from app.services import campaign_service
+from app.schemas.pledges import MyPledgeRequest, PledgeSummary
+from app.services import campaign_service, pledge_service
 
 router = APIRouter()
 
@@ -166,3 +167,19 @@ def list_campaign_pledges(
         db, family_id=actor.family_id, campaign_id=campaign_id
     )
     return [PledgeResponse.from_pledge(p, name) for p, name in rows]
+
+
+@router.post("/{campaign_id}/my-pledge", response_model=PledgeSummary)
+def my_pledge(
+    campaign_id: uuid.UUID,
+    body: MyPledgeRequest,
+    member: Member = Depends(get_current_member),
+    db: Session = Depends(get_db),
+):
+    """A member pledges to a pledge or emergency campaign, or changes their pledge."""
+    pledge = pledge_service.make_voluntary_pledge(
+        db, actor=member, campaign_id=campaign_id, member_id=member.id, amount=body.amount
+    )
+    db.commit()
+    view = pledge_service.get_pledge_view(db, family_id=member.family_id, pledge_id=pledge.id)
+    return PledgeSummary.from_view(view)

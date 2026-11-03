@@ -26,6 +26,7 @@ class Pledge(Base):
         UniqueConstraint("member_id", "campaign_id", name="uq_pledge_member_campaign"),
         CheckConstraint("amount > 0", name="check_pledge_amount_positive"),
         CheckConstraint("fulfilled_amount >= 0", name="check_pledge_fulfilled_not_negative"),
+        CheckConstraint("fulfilled_amount <= amount", name="check_pledge_fulfilled_within_amount"),
     )
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
